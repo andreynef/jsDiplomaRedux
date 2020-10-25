@@ -26,7 +26,7 @@ export default function toAuth(accessToken) {
   }else if (accessToken){
     return false
   }else {//иначе процедура получения токена.
-    alert('in else');
+    alert('toauth, in else');
 
     unsplash.auth.userAuthentication(codeFromUrl)//отправляем запрос на получение токена
       .then(toJson)

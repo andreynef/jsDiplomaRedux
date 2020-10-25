@@ -8,8 +8,13 @@ import toAuth from "./functions/toAuth";
 
 
 const accessToken = JSON.parse(localStorage.getItem('accessToken'));//считать массив в JSON формате('text','text') из localStorage и привести ее обратно в божеский вид путем parse.
-  toAuth(accessToken);
-
+if (!accessToken){
+  alert('no accessToken!, -> toAuth()')
+  toAuth();
+}
+else
+  {
+  alert('yes accessToken!, -> else ReactDOM.render')
   const initialState = {}
 
   const store = createStore (reducer, initialState);
@@ -21,4 +26,5 @@ const accessToken = JSON.parse(localStorage.getItem('accessToken'));//счита
     ,
     document.querySelector("#root")
   );
+}
 
