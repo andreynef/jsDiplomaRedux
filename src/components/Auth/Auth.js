@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from './auth.css';
 import loader from "../../img/Gear.gif";
+import toAuth from "../../functions/toAuth";
 
 export function Auth() {
+
+  toAuth();
 
   return (
     <div className={styles.authContainer}>

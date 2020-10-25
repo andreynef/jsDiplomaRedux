@@ -9,21 +9,21 @@ import toAuth from "./functions/toAuth";
 
 const accessToken = JSON.parse(localStorage.getItem('accessToken'));//считать массив в JSON формате('text','text') из localStorage и привести ее обратно в божеский вид путем parse.
 if (!accessToken){
-  alert('no auth!, go take a shit')
+  alert('no auth!, -> toAuth()')
   toAuth();
 }
-// else
-  // {
-  // const initialState = {}
-  //
-  // const store = createStore (reducer, initialState);
-  //
-  // ReactDOM.render (//отрендерить/отрисовать
-  //   <BrowserRouter>
-  //     <App store={store} accessKey={accessToken}/>
-  //   </BrowserRouter>
-  //   ,
-  //   document.querySelector("#root")
-//   );
-// }
+else
+  {
+  const initialState = {}
+
+  const store = createStore (reducer, initialState);
+
+  ReactDOM.render (//отрендерить/отрисовать
+    <BrowserRouter>
+      <App store={store} accessKey={accessToken}/>
+    </BrowserRouter>
+    ,
+    document.querySelector("#root")
+  );
+}
 
