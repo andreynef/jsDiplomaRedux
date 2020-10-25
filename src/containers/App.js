@@ -251,7 +251,7 @@ let App = ({itemsArr, inputValue, textAreaValue, handleDelete, handleChange, han
         {/*         />*/}
         {/*       }*/}
         {/*/>*/}
-        <Route exact path={'/auth'} component={() => <Auth unsplash={unsplash}/>}/>
+        {/*<Route exact path={'/auth'} component={() => <Auth unsplash={unsplash}/>}/>*/}
       </Switch>
       {/*{!isCardOpened &&(*/}
       {/*  <Footer/>*/}
