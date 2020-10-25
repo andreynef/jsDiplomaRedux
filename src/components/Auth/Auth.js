@@ -4,7 +4,7 @@ import loader from "../../img/Gear.gif";
 import toAuth from "../../functions/toAuth";
 
 export function Auth() {
-
+  alert('in component Auth -> toAuth()')
   toAuth();
 
   return (

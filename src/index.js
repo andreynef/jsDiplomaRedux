@@ -9,12 +9,12 @@ import toAuth from "./functions/toAuth";
 
 const accessToken = JSON.parse(localStorage.getItem('accessToken'));//считать массив в JSON формате('text','text') из localStorage и привести ее обратно в божеский вид путем parse.
 if (!accessToken){
-  alert('no accessToken!, -> toAuth()')
-  toAuth();
+  alert('index. no accessToken in local!, -> toAuth()')
+  toAuth(accessToken);
 }
 else
   {
-  alert('yes accessToken!, -> else ReactDOM.render')
+  alert('index. yes accessToken in  local!, -> else ReactDOM.render')
   const initialState = {}
 
   const store = createStore (reducer, initialState);
