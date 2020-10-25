@@ -10,6 +10,7 @@ export default function toAuth(accessToken) {
   const secret = process.env.SECRET;
   const callbackUrl = process.env.CALLBACKURL;
   // const bearerToken = localStorage.accessTokenForUnsplash;//берем из локала. Если нет то устанавливается на null.
+  alert('in toAuth() process.env.ACCESSKEY:', accessKey);
 
   const unsplash = new Unsplash({
     accessKey: accessKey,
@@ -19,29 +20,23 @@ export default function toAuth(accessToken) {
 
   const codeFromUrl = window.location.search.split('code=')[1];// Считываем код из URL
 
-  if (!codeFromUrl) {//если его нет, то процедура его генерации.
-    alert('in toAuth() in if !codeFromUrl');
+  if (codeFromUrl) {//если он есть, то отправляем запрос на получение токена.
+    alert('toauth(), codeFromUrl yes -> getting token and setting to local');
+
+    unsplash.auth.userAuthentication(codeFromUrl)//
+      .then(toJson)
+      .then(json => {
+        localStorageSet('accessToken', JSON.stringify(json.access_token));
+        alert('reload');
+        window.location.assign('https://redux.nef-an.ru');// Перезагружаем гл страницу. Уже эта ф не нужна тк в index.js стоит проверка на наличие accessToken в локале. Если есть то это ф не сработает.
+      })
+  }else {//если кода нет, то процедура его генерации
+    alert('toAuth() no url ');
     const authenticationUrl = unsplash.auth.getAuthenticationUrl([
       "public",
       "write_likes",
     ]);
     window.location.assign(authenticationUrl);//перенос на страницу логина unsplash. После ввода логина он отправляет на callbackUrl с кодом.
-  }
-
-  if (accessToken){//если считан
-    alert('in toauth, in else if accessToken -> return false');
-    return false
-  }else {//иначе процедура получения токена.
-    alert('in toauth, in else -> setting local');
-
-    unsplash.auth.userAuthentication(codeFromUrl)//отправляем запрос на получение токена
-      .then(toJson)
-      .then(json => {
-        localStorageSet('accessToken', JSON.stringify(json.access_token));
-        alert('in toauth, in else -> reload');
-        window.location.assign('https://redux.nef-an.ru');// Перезагружаем гл страницу. Уже эта ф не нужна тк в index.js стоит проверка на наличие accessToken в локале. Если есть то это ф не сработает.
-      })
-
   }
 }
     
