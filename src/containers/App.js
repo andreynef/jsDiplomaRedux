@@ -191,9 +191,9 @@ let App = ({itemsArr, inputValue, textAreaValue, handleDelete, handleChange, han
   };
 
   useEffect(() => {
-    getBearerTokenFromUrlCode();//is it toAuth url? true  -> setBearerTokenToLocalStorage and reload.
-    getUserProfile();//is unsplash has code? true -> setUserProfile,setIsAuth.
-    getFirstTenPhotos();//are images empty? true  -> setImages.
+    // getBearerTokenFromUrlCode();//is it toAuth url? true  -> setBearerTokenToLocalStorage and reload.
+    // getUserProfile();//is unsplash has code? true -> setUserProfile,setIsAuth.
+    // getFirstTenPhotos();//are images empty? true  -> setImages.
   }, []);//= componentDidMount, componentWillUpdate. Выполняется 1 раз при монтаже и кажд раз при изменении []. Если в [] пусто то просто 1 раз при монтаже.
 
   return (

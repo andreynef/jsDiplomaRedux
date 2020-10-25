@@ -8,9 +8,7 @@ import toAuth from "./functions/toAuth";
 
 
 const accessToken = JSON.parse(localStorage.getItem('accessToken'));//считать массив в JSON формате('text','text') из localStorage и привести ее обратно в божеский вид путем parse.
-if (!accessToken){
-  alert('no auth!, -> toAuth()')
-  toAuth();
+  toAuth(accessToken);
 
   const initialState = {}
 
@@ -23,5 +21,4 @@ if (!accessToken){
     ,
     document.querySelector("#root")
   );
-}
 

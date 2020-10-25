@@ -2,7 +2,7 @@ import Unsplash, {toJson} from 'unsplash-js';
 import localStorageSet from "./localStorageSet";
 
 
-export default function toAuth() {
+export default function toAuth(accessToken) {
   const ACCESSKEY = 'Awhepytu0JPZujZW7f97BMriVV8gKVO9_i2cM82Z1YU';
   const SECRET = '6LfA1BzLZz3Z2_Co9uWJJB4_fkpZvXZAUCxdQEAHP5o';
   const CALLBACKURL = 'https://andreynef.github.io/16module_Redux_Diploma/auth';
@@ -23,7 +23,9 @@ export default function toAuth() {
       "write_likes",
     ]);
     window.location.assign(authenticationUrl);//перезагрузка(или переход?) на страницу auth с кодом. Прогон заново.
-  }else{//иначе процедура получения токена.
+  }else if (accessToken){
+    return false
+  }else {//иначе процедура получения токена.
     alert('in else');
 
     unsplash.auth.userAuthentication(codeFromUrl)//отправляем запрос на получение токена
@@ -32,6 +34,7 @@ export default function toAuth() {
         localStorageSet('accessToken', JSON.stringify(json.access_token));
         window.location.assign('https://andreynef.github.io/16module_Redux_Diploma');// Перезагружаем гл страницу.
       })
+
   }
 }
     
