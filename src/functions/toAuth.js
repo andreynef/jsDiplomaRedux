@@ -3,9 +3,12 @@ import localStorageSet from "./localStorageSet";
 
 
 export default function toAuth() {
-  const ACCESSKEY = 'sQ_OK-FHQD1dS6L4h98HkNOr-HHHKRE8KuUPVf9BXAw';
-  const SECRET = 'Eu_hWiHa3mUGcHyGtq2Idfj_gGCGYq6Jp0mv1ZL_kjA';
-  const CALLBACKURL = 'https://jsdiploma.nef-an.ru/auth';
+  const ACCESSKEY = 'Awhepytu0JPZujZW7f97BMriVV8gKVO9_i2cM82Z1YU';
+  const SECRET = '6LfA1BzLZz3Z2_Co9uWJJB4_fkpZvXZAUCxdQEAHP5o';
+  const CALLBACKURL = 'https://andreynef.github.io/16module_Redux_Diploma/auth';
+  // const ACCESSKEY = 'sQ_OK-FHQD1dS6L4h98HkNOr-HHHKRE8KuUPVf9BXAw';
+  // const SECRET = 'Eu_hWiHa3mUGcHyGtq2Idfj_gGCGYq6Jp0mv1ZL_kjA';
+  // const CALLBACKURL = 'https://jsdiploma.nef-an.ru/auth';
   const unsplash = new Unsplash({
     accessKey: ACCESSKEY,
     secret: SECRET,
@@ -27,7 +30,7 @@ export default function toAuth() {
       .then(toJson)
       .then(json => {
         localStorageSet('accessToken', JSON.stringify(json.access_token));
-        window.location.assign('https://jsdiploma.nef-an.ru');// Перезагружаем гл страницу.
+        window.location.assign('https://andreynef.github.io/16module_Redux_Diploma');// Перезагружаем гл страницу.
       })
   }
 }
