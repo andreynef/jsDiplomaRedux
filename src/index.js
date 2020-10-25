@@ -11,9 +11,7 @@ const accessToken = JSON.parse(localStorage.getItem('accessToken'));//счита
 if (!accessToken){
   alert('no auth!, -> toAuth()')
   toAuth();
-}
-else
-  {
+
   const initialState = {}
 
   const store = createStore (reducer, initialState);
