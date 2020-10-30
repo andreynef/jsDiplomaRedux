@@ -17,11 +17,11 @@ export function CardPage({unsplashThunk, clickedObj, clickClose}) {
   const [localLikes, setLocalLikes] = useState(clickedObj.likes);//первоначальное состояние лайков после глобального рендера
   const handlePress=()=>{//запросы реальные а отображение только локальное. -
     if (localIsLiked){
-      unsplashThunk('unlike',clickedObj,clickedObj.id)
+      unsplashThunk('unlike',clickedObj.id)
       setLocalIsLiked(!localIsLiked)
       setLocalLikes(localLikes-1)
     }else{
-      unsplashThunk('like',clickedObj,clickedObj.id)
+      unsplashThunk('like',clickedObj.id)
       setLocalIsLiked(!localIsLiked)
       setLocalLikes(localLikes+1)
     }
