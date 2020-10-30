@@ -5,16 +5,16 @@ import configureStore from './functions/configureStore';
 import App from './containers/App.js';
 import {BrowserRouter} from "react-router-dom";
 import toAuth from "./functions/toAuth";
+import {HOMEPAGE} from "./constants";
 
 
 const accessToken = JSON.parse(localStorage.getItem('accessToken'));
-// const accessToken = "AFaBKCHAaRKIVtFmrXxyflnwHn69VaTqdU70ErSmtw4";
 
 if (!accessToken){
-  alert('index.js no token -> toAuth()')
   toAuth();
+}else if (window.location.pathname ==='/cardpage' ) {
+  window.location.assign(HOMEPAGE)
 }else{
-  alert('index.js token -> render')
 
   const store = configureStore();
 

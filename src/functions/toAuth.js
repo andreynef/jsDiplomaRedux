@@ -12,8 +12,6 @@ export default function toAuth() {
   });
 
   if (codeFromUrl) {//если он есть, то отправляем запрос на получение токена.
-    alert('toauth(), codeFromUrl yes -> getting token and setting to local');
-
     unsplash.auth.userAuthentication(codeFromUrl)
       .then(toJson)
       .then(json => {
@@ -21,7 +19,6 @@ export default function toAuth() {
         window.location.assign(HOMEPAGE);// Перезагружаем гл страницу.-> новый рендер = нов проверка = эта ф больше не понадобится.
       })
   }else {//если кода нет, то процедура его генерации
-    alert('toAuth() no url ');
     const authenticationUrl = unsplash.auth.getAuthenticationUrl([
       "public",
       "write_likes",

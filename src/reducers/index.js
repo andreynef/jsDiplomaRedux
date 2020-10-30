@@ -1,13 +1,12 @@
 //Редюсеры - это чф принимающ 2 арг 1)сущ стейт и 2) действие кот нужно провести с этим стейтом (определяется по type и фильтруется чер switch)
 
-import {INITIAL_PAGE} from "../constants";
+import {HOMEPAGE, INITIAL_PAGE} from "../constants";
 
 const rootReducer = (state = {}, action) => {//ф фильтрующая действия. Ей должны прийти 2 арг, массив/обьект state и объект action.
 
 	switch (action.type){//Важно! Из Reducers нужно возвращать копию стейта (новую базу)
 
 		case 'CLICK_PREVIEW_ACTION':
-			console.log(action.cardObj);
 			return {
 				...state,
 				isCardOpened:true,
@@ -22,6 +21,7 @@ const rootReducer = (state = {}, action) => {//ф фильтрующая дей�
 
 		case 'CLICK_LOGOUT_ACTION':
 			localStorage.removeItem('accessToken');
+			window.location.assign(HOMEPAGE);// Перезагружаем гл страницу
 			break;
 
 		case 'UNSPLASH_LIKE_SUCCESS_ACTION':

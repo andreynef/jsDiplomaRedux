@@ -12,21 +12,17 @@ import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 let App = ({itemsArr, userProfile, nextPage, isCardOpened, clickedObj, clickPreview, clickLogout, clickClose, unsplashThunk}) => {
 
-  const toggleScroll = ()=>{
+  useEffect(()=>{
+    unsplashThunk('profile');//(keyStr,arg2?)  -  initial Render
+    unsplashThunk('listPhotos');//(keyStr,arg2?)  -  initial Render
+  },[])
+
+  useEffect(() => {
     if(isCardOpened){
       disablePageScroll();
     }else{
       enablePageScroll();
     }
-  }
-
-  useEffect(()=>{
-    unsplashThunk('profile');//(keyStr,arg2?,arg3?)  -  initial Render
-    unsplashThunk('listPhotos');//(keyStr,arg2?,arg3?)  -  initial Render
-  },[])
-
-  useEffect(() => {
-    toggleScroll();
   }, [isCardOpened]);//is isCardOpened changed? -> disablePageScroll/enablePageScroll.
 
   return (
@@ -56,9 +52,7 @@ let App = ({itemsArr, userProfile, nextPage, isCardOpened, clickedObj, clickPrev
           clickClose={clickClose}
         />
       )}
-      {!isCardOpened &&(
-        <Footer/>
-      )}
+      <Footer/>
     </>
 
 )
