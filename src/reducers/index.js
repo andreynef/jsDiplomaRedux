@@ -21,7 +21,7 @@ const rootReducer = (state = {}, action) => {//ф фильтрующая дей�
 
 		case 'CLICK_LOGOUT_ACTION':
 			localStorage.removeItem('accessToken');
-			window.location.assign(HOMEPAGE);// Перезагружаем гл страницу
+			window.location.assign('https://unsplash.com');// Перебрасываем на гл страницу и там юзер сам разлогинивается.
 			break;
 
 		case 'UNSPLASH_LIKE_SUCCESS_ACTION':
