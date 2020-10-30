@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 // Usage
-function App() {
+function SomeComponent() {
   // Create a ref that we add to the element for which we want to detect outside clicks
   const ref = useRef();
   // State for our modal
@@ -23,7 +23,7 @@ function App() {
 }
 
 // Hook
-function useOnClickOutside(ref, handler) {
+export default function useOnClickOutside(ref, handler) {
   useEffect(
     () => {
       const listener = event => {

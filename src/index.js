@@ -1,27 +1,28 @@
 import React from 'react';//импорт реакт библиотеки для работы с этим файлом
-import ReactDOM from 'react-dom';//импорт реактдом библиотеки для работы с этим файлом (только в том файле где находится строчка ReactDOM.render)
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './functions/configureStore';
 import App from './containers/App.js';
-import {createStore} from 'redux';
-import reducer from './reducers';
 import {BrowserRouter} from "react-router-dom";
 import toAuth from "./functions/toAuth";
 
 
-const accessToken = JSON.parse(localStorage.getItem('accessToken'));//считать массив в JSON формате('text','text') из localStorage и привести ее обратно в божеский вид путем parse.
+const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+// const accessToken = "AFaBKCHAaRKIVtFmrXxyflnwHn69VaTqdU70ErSmtw4";
+
 if (!accessToken){
-  alert('index. no accessToken in local!, -> toAuth()')
-  toAuth(accessToken);
-}
-else
-  {
-  alert('index. yes accessToken in  local!, -> else ReactDOM.render')
-  const initialState = {}
+  alert('index.js no token -> toAuth()')
+  toAuth();
+}else{
+  alert('index.js token -> render')
 
-  const store = createStore (reducer, initialState);
+  const store = configureStore();
 
-  ReactDOM.render (//отрендерить/отрисовать
+  ReactDOM.render (
     <BrowserRouter>
-      <App store={store} accessKey={accessToken}/>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
     ,
     document.querySelector("#root")

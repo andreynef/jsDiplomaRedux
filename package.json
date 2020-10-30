@@ -37,15 +37,17 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-infinite-scroll-component": "^5.1.0",
     "react-progressive-graceful-image": "^0.6.12",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "2.1.1",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
     "rfdc": "^1.1.4",
     "scroll-lock": "^2.1.4",
-    "classnames": "^2.2.6",
-    "react-infinite-scroll-component": "^5.1.0",
-    "react-router-dom": "^5.2.0",
     "styled-components": "^5.2.0",
     "ts-loader": "^8.0.5",
     "unsplash-js": "^6.3.0"

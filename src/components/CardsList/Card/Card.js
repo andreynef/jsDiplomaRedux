@@ -4,19 +4,20 @@ import {Controls} from "./Controls/Controls";
 import {Info} from "./Info/Info";
 import {Preview} from "./Preview/Preview";
 
-export function Card({add,url, clickedImageObj,isHeartError, setIsHeartError, created, likes, handleClickHeart, profile, name, ava, description, open, id, handleClickPreview, pressed, setPressed, setLikedId, likePhoto, isLiked, isAuth, whoIs}) {
+export function Card({itemsArr, nextPage, url, cardObj, created, likes, profile, name, ava, description, id, clickPreview, isLiked, whoIs, unsplashThunk}) {
+
   return (
     <div className={styles.card}>
       {whoIs === 'moreButton'
         ?
-        <div className={styles.loadMoreContainer} onClick={add}>
+        <div className={styles.loadMoreContainer} onClick={()=>unsplashThunk('listPhotos',nextPage)}>
           <span className={styles.loadMoreText}>Load more</span>
         </div>
         :
         <>
           <Info created={created} profile={profile} name={name} ava={ava} description={description}/>
-          <Preview url={url} handleClickPreview={handleClickPreview} id={id}/>
-          <Controls clickedImageObj={clickedImageObj} isHeartError={isHeartError} likes={likes} handleClickHeart={handleClickHeart} isLiked={isLiked} id={id}/>
+          <Preview url={url} clickPreview={clickPreview} cardObj={cardObj}/>
+          <Controls cardObj={cardObj} likes={likes} unsplashThunk={unsplashThunk} isLiked={isLiked} id={id}/>
         </>
         }
     </div>

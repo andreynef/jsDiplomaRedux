@@ -1,6 +1,6 @@
 .cardPage {
     background-color: rgba(0,0,0,0.7);
-    position:absolute;
+    position:fixed;
     width:100%;
     height:100%;
     top:0;
@@ -81,17 +81,24 @@
     align-items: center;
     padding: 20px;
     border-top: 1px solid #f4f4f4;
-
 }
+
 .likesValue {
     color: #999999;
 }
 
+.likesIcon {
+    margin-left: 10px;
+    /*display:inline-block;*/
+
+}
 .button {
     background-color: transparent;
     align-items: center;
     margin-left:10px;
     border:none;
+    display:flex;
+    outline: none;
 }
 
 .button:hover {
@@ -102,12 +109,15 @@
     position: absolute;
     top:30px;
     right:30px;
-    /*height: 300px;*/
-    /*margin:0;*/
-    /*padding:0;*/
-    /*border:none;*/
-    /*outline:none;*/
-    /*background-color: transparent;*/
+    height: 30px;
+    width: 30px;
+    margin:0;
+    padding:0;
+    border:none;
+    outline:none;
+    background-image: url('../../img/close.png');
+    background-size: contain;
+    background-color: transparent;
 }
 
 .exitButton:hover {

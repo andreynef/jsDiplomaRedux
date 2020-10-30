@@ -16,23 +16,29 @@
     color: white;
 }
 
-.errorContainer {
-    margin-left:10px;
-    display:flex;
-    flex-flow: column nowrap;
-    justify-content: center;
+.likesIcon {
+    margin-left: 10px;
+    /*display:inline-block;*/
+
 }
 
-.errorValue {
-    color: red;
-    font-size: 12px;
-    padding:0;
-    margin:0;
-}
+/*.errorContainer {*/
+/*    margin-left:10px;*/
+/*    display:flex;*/
+/*    flex-flow: column nowrap;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.errorValue {*/
+/*    font-size: 12px;*/
+/*    padding:0;*/
+/*    margin:0;*/
+/*}*/
 
 
 
 .button {
+    display:flex;
     background-color: transparent;
     align-items: center;
     margin-left:10px;

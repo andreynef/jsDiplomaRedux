@@ -3,12 +3,12 @@ import styles from './cardList.css';
 import {Card} from "./Card/Card";
 import Loader from '../../../src/img/3.svg'
 import {PlaceholderCard} from "./PlaceholderCard/PlaceholderCard";
+import {CardPage} from "../CardPage/CardPage";
 
-export function CardList({add,clickedImageObj,images, handleClickPreview, handleClickHeart, isAuth, setIsCardOpened, isHeartError, setIsHeartError}) {
-  const loadMoreBtn = images.length ? <Card add={add} whoIs={'moreButton'}/> : null;
+export function CardList({unsplashThunk,itemsArr,clickPreview,clickedObj,nextPage}) {
+
   let cardList;
-
-  if (!images.length) {
+  if (!itemsArr) {
     cardList=
       <>
         <div className={styles.loader}>
@@ -22,7 +22,7 @@ export function CardList({add,clickedImageObj,images, handleClickPreview, handle
         <PlaceholderCard/>
       </>
   } else {
-    cardList = images.map((item, i) => {
+    cardList = itemsArr.map((item, i) => {
       return (
           <Card
             key={item.id}
@@ -33,14 +33,11 @@ export function CardList({add,clickedImageObj,images, handleClickPreview, handle
             likes={item.likes}
             url={item.urls.thumb}
             ava={item.user.profile_image.small}
-            handleClickPreview={handleClickPreview}
-            handleClickHeart={handleClickHeart}
+            clickPreview={clickPreview}
             isLiked={item.liked_by_user}
-            isAuth={isAuth}
-            setIsCardOpened={setIsCardOpened}
-            setIsHeartError={setIsHeartError}
-            isHeartError={isHeartError}
-            clickedImageObj={clickedImageObj}
+            clickedObj={clickedObj}
+            cardObj={item}
+            unsplashThunk={unsplashThunk}
           />
       )
     })}
@@ -50,16 +47,11 @@ export function CardList({add,clickedImageObj,images, handleClickPreview, handle
         <section className={styles.centralContainer}>
           <ul className={styles.cardList}>
             {cardList}
-            {loadMoreBtn}
+            {itemsArr && (
+              <Card unsplashThunk={unsplashThunk} nextPage={nextPage} itemsArr={itemsArr} whoIs={'moreButton'}/>
+            )}
           </ul>
         </section>
-        {/*<button*/}
-        {/*  className={styles.button}*/}
-        {/*  type="button"*/}
-        {/*  onClick={add}*/}
-        {/*>*/}
-        {/*  Загрузить еще*/}
-        {/*</button>*/}
       </main>
     )
 }
