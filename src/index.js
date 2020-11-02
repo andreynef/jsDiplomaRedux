@@ -14,9 +14,9 @@ const accessToken = JSON.parse(localStorage.getItem('accessToken'));
 if (!accessToken){
   toAuth();
 }else if (window.location.pathname !=='/' || '/user' ||'/auth') {
-  alert('in 404')
   console.log('homepage is:', HOMEPAGE)
-  window.location.assign(`${HOMEPAGE}/404`)
+  alert('in 404')
+  window.location.assign(`https://jsdiploma.nef-an.ru/404`)
 }else{
 
   const store = configureStore();
