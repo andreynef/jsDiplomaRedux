@@ -1,9 +1,9 @@
 import {HOMEPAGE} from "../constants";
-import unsplashThunkActionCreator from "../actions/unsplashThunkActionCreator";
+import unsplash from "../actions/unsplashThunkActionCreator";
 
 
 export default function toAuth() {
-  let unsplash = unsplashThunkActionCreator();
+
   const codeFromUrl = window.location.search.split('code=')[1];// Считываем код из URL
 
   if (codeFromUrl) {//если в строке есть код то это значит что идет процедура авторизации. Отправляем запрос на получение токена.
