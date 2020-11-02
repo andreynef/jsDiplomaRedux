@@ -5,12 +5,8 @@ import {ACCESSKEY, SECRET, CALLBACKURL, HOMEPAGE} from "../constants"
 export default function toAuth() {
 
   const codeFromUrl = window.location.search.split('code=')[1];// Считываем код из URL
-  const accessToken = JSON.parse(localStorage.getItem('accessToken'));
-  // const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
 
-  if (accessToken) {//если уже есть токен то выход из процедуры авторизации.
-    return true
-  }else if (codeFromUrl) {//если в строке есть код то это значит что идет процедура авторизации. Отправляем запрос на получение токена.
+  if (codeFromUrl) {//если в строке есть код то это значит что идет процедура авторизации. Отправляем запрос на получение токена.
     const unsplash = new Unsplash({
       accessKey: ACCESSKEY,
       secret: SECRET,
