@@ -13,14 +13,10 @@ const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
 
 if (!accessToken){
   toAuth();
-}else if (window.location.pathname ===`/`) {
-  alert('if /')
 }else if (window.location.pathname ===`/user`) {
   alert('in if /user')
 }else if (window.location.pathname ===`/auth`) {
   alert('in if /auth')
-}else if (window.location.pathname ===`/404`) {
-  alert('in if /404')
 }else if (window.location.pathname ===`/test`) {
   alert('in if /test')
   window.location.assign(`https://jsdiploma.nef-an.ru/404`)
