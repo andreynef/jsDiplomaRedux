@@ -1,15 +1,11 @@
 import React from 'react';
 import styles from './header.css';
 import {Link} from "react-router-dom";
+import capitalizeFirstLetter from "../../functions/capitalizeFirstLetter";
 
 export function Header({devBtn, clickLogout, userProfile}) {
 
   if (userProfile){//решение преждевременного рендера
-    const userName=capitalizeFirstLetter(`${userProfile.first_name}`);
-
-    function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
 
     return (
       <header className={styles.headerContainer}>
@@ -39,7 +35,14 @@ export function Header({devBtn, clickLogout, userProfile}) {
                 alt="avatar"
               />
               <button className={styles.button} type="button">
-                <a target="_blank" rel="noopener noreferrer" href={userProfile.links.html} className={styles.avatarText} > {userName}</a>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={userProfile.links.html}
+                  className={styles.avatarText}
+                >
+                  {capitalizeFirstLetter(`${userProfile.first_name}`)}
+                </a>
               </button>
             </>
           </div>

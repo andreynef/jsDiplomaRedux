@@ -59,7 +59,9 @@ export const unsplashThunkActionCreator = (keyStr,arg2) => {//ф создающ�
 						return dispatch(uUnlikeSuccessAction(json))
 					});
 			};
-	}
+	};
+
+	return unsplash
 }
 
 
