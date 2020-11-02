@@ -10,7 +10,7 @@ import {HOMEPAGE} from "./constants";
 const accessToken = JSON.parse(localStorage.getItem('accessToken'));
 // const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
 
-const exists =//true если это одна из этих страниц
+const isExist =//true если это одна из этих страниц
   window.location.pathname === '/' ||
   window.location.pathname === '/auth' ||
   window.location.pathname === '/user' ||
@@ -18,7 +18,7 @@ const exists =//true если это одна из этих страниц
 
 if (!accessToken){
   toAuth();
-}else if (!exists){//если false, тобишь не мои страницы то...
+}else if (!isExist){//если false, тобишь не мои страницы то...
   window.location.assign(`${HOMEPAGE}/404`);//...отправляем на мою 404
 }else{
 
