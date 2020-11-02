@@ -8,17 +8,18 @@ import toAuth from "./functions/toAuth";
 import {HOMEPAGE} from "./constants";
 
 
-const accessToken = JSON.parse(localStorage.getItem('accessToken'));
-// const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
+// const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
 
 if (!accessToken){
   toAuth();
-}else if (window.location !==`${HOMEPAGE}/` || `${HOMEPAGE}/user` ||`${HOMEPAGE}/auth`) {
+}else if (window.location ===`${HOMEPAGE}/`) {
   // console.log('homepage is:', HOMEPAGE)
-  alert('in if')
-}else if(window.location==='/404'){
-  alert('in if 404')
-  return false
+  alert('in if homepage')
+}else if (window.location ===`${HOMEPAGE}/user`) {
+  alert('in if homepage/user')
+}else if (window.location ===`${HOMEPAGE}/auth`) {
+  alert('in if homepage/auth')
 }else{
 
   const store = configureStore();
