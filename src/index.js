@@ -13,7 +13,7 @@ const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
 
 if (!accessToken){
   toAuth();
-}else if (window.location.pathname !=='/' || '/user' || '/auth' || '/404') {
+}else if (window.location.pathname !=='' || '/user' || '/auth' || '/404') {
   alert('in if')
   window.location.assign(`${HOMEPAGE}/404`)
 }else{
