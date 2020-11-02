@@ -13,7 +13,7 @@ const accessToken = JSON.parse(localStorage.getItem('accessToken'));
 
 if (!accessToken){
   toAuth();
-}else if (window.location.pathname !==`${HOMEPAGE}/` || `${HOMEPAGE}/user` ||`${HOMEPAGE}/auth`) {
+}else if (window.location.pathname !=='/' || '/user' ||'/auth') {
   alert('in 404')
   window.location.assign(`${HOMEPAGE}/404`)
 }else{
