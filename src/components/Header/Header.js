@@ -29,7 +29,9 @@ export function Header({devBtn, clickLogout, userProfile}) {
           <div className={styles.userContainer}>
             <>
               <button className={styles.button} type="button" onClick={clickLogout}>
-                <span className={styles.logoutText}>Logout</span>
+                <span className={styles.logoutText}>
+                  Logout
+                </span>
               </button>
               <img
                 className={styles.avatarImg}

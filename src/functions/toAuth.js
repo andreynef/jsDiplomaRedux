@@ -9,7 +9,7 @@ export default function toAuth() {
   // const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
 
   if (accessToken) {//если уже есть токен то выход из процедуры авторизации.
-    return false
+    return true
   }else if (codeFromUrl) {//если в строке есть код то это значит что идет процедура авторизации. Отправляем запрос на получение токена.
     const unsplash = new Unsplash({
       accessKey: ACCESSKEY,
