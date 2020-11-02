@@ -13,14 +13,13 @@ const accessToken = JSON.parse(localStorage.getItem('accessToken'));
 
 if (!accessToken){
   toAuth();
-}else if (window.location.pathname !=='/'||'/user') {
-//   console.log('homepage is:', HOMEPAGE)
-//   window.location.assign(`https://jsdiploma.nef-an.ru/404`)
-// // }else if(window.location.pathname ==='/404'){
-  alert('in pathname filter')
-
+}else if (window.location !==`${HOMEPAGE}/` || `${HOMEPAGE}/user` ||`${HOMEPAGE}/auth`) {
+  // console.log('homepage is:', HOMEPAGE)
+  alert('in if')
+}else if(window.location==='/404'){
+  alert('in if 404')
+  return false
 }else{
-  alert('in else')
 
   const store = configureStore();
 
