@@ -17,8 +17,8 @@ if (!accessToken){
   window.location.pathname ==='/test') {
   alert('in test -> moving to 404');
   window.location.assign(`${HOMEPAGE}/404`);
-}else if (window.location.pathname !=='/user'|| window.location.pathname !=='/auth'|| window.location.pathname !=='/404') {
-  alert('in !all except / -> moving to 404');
+}else if (window.location.pathname !=='/'|| window.location.pathname !=='/user'|| window.location.pathname !=='/auth'|| window.location.pathname !=='/404') {
+  alert('in !all -> moving to 404');
   window.location.assign(`${HOMEPAGE}/404`)
 }else{
 
