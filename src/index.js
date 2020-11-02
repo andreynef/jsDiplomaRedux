@@ -15,9 +15,13 @@ if (!accessToken){
   toAuth();
 }else if (window.location.pathname !=='/' || '/user' ||'/auth') {
   console.log('homepage is:', HOMEPAGE)
-  alert('in 404')
+  alert('go to 404')
   window.location.assign(`https://jsdiploma.nef-an.ru/404`)
+}else if(window.location.pathname ==='/404'){
+  alert('in 404')
+  return
 }else{
+
 
   const store = configureStore();
 
