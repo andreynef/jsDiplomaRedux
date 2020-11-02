@@ -20,6 +20,8 @@ if (!accessToken){
   window.location.assign(`${HOMEPAGE}/404`)
 }else if (window.location.pathname !=='/') {
   alert('in if !/');
+}else if (window.location.pathname ==='/auth') {
+  alert('in if /auth');
 }else if (window.location.pathname !=='/auth') {
   alert('in if !/auth');
 }else{
