@@ -1,10 +1,13 @@
-import {HOMEPAGE} from "../constants";
-import unsplash from "../actions/unsplashThunkActionCreator";
+import {ACCESSKEY, SECRET, CALLBACKURL, HOMEPAGE} from "../constants";
 
 
 export default function toAuth() {
-
   const codeFromUrl = window.location.search.split('code=')[1];// Считываем код из URL
+  const unsplash = new Unsplash({
+    accessKey: ACCESSKEY,
+    secret: SECRET,
+    callbackUrl: CALLBACKURL,
+  });
 
   if (codeFromUrl) {//если в строке есть код то это значит что идет процедура авторизации. Отправляем запрос на получение токена.
     unsplash.auth.userAuthentication(codeFromUrl)
