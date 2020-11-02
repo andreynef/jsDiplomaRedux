@@ -13,13 +13,9 @@ const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
 
 if (!accessToken){
   toAuth();
-}else if (window.location.pathname ===`/user`) {
-  alert('in if /user')
-}else if (window.location.pathname ===`/auth`) {
-  alert('in if /auth')
-}else if (window.location.pathname ===`/test`) {
-  alert('in if /test')
-  window.location.assign(`https://jsdiploma.nef-an.ru/404`)
+}else if (window.location.pathname !=='/' || '/user' ||'/auth') {
+  alert('in if')
+  window.location.assign(`${HOMEPAGE}/404`)
 }else{
 
   const store = configureStore();
