@@ -3,7 +3,7 @@ import styles from './header.css';
 import {Link} from "react-router-dom";
 import capitalizeFirstLetter from "../../functions/capitalizeFirstLetter";
 
-export function Header({devBtn, clickLogout, userProfile}) {
+export function Header({clickLogout, userProfile}) {
 
   if (userProfile){//решение преждевременного рендера
   const userName = capitalizeFirstLetter(`${userProfile.first_name}`);

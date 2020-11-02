@@ -8,6 +8,7 @@ import toAuth from "./functions/toAuth";
 import {HOMEPAGE} from "./constants";
 
 const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+// const accessToken = "1HW7FNACP1ZopVpb0MPbNIl-rQMN-NnbIiwjnhkqa3E";
 
 const isPageExist =//true если это одна из этих страниц
   window.location.pathname === '/' ||

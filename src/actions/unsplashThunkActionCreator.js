@@ -11,15 +11,14 @@ import {
 	uListPhotosSuccessAction,
 } from "./index";
 
-
-
 export const unsplashThunkActionCreator = (keyStr,arg2) => {//ф создающая запрос в Unsplash. 2 кастомных аргумента передаются из компонентов.
 
 	const unsplash = new Unsplash({
 		accessKey: ACCESSKEY,
 		secret: SECRET,
 		callbackUrl: CALLBACKURL,
-		bearerToken: localStorage.getItem('accessToken'),
+		// bearerToken: localStorage.getItem('accessToken'),
+		bearerToken: "1HW7FNACP1ZopVpb0MPbNIl-rQMN-NnbIiwjnhkqa3E",
 	});
 
 	switch (keyStr) {
