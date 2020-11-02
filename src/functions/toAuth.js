@@ -5,25 +5,34 @@ import {ACCESSKEY, SECRET, CALLBACKURL, HOMEPAGE} from "../constants"
 export default function toAuth() {
 
   const codeFromUrl = window.location.search.split('code=')[1];// Считываем код из URL
-  const unsplash = new Unsplash({
-    accessKey: ACCESSKEY,
-    secret: SECRET,
-    callbackUrl: CALLBACKURL,
-  });
+  const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+  // const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
 
-  if (codeFromUrl) {//если он есть, то отправляем запрос на получение токена.
+  if (accessToken) {//если уже есть токен то выход из процедуры авторизации.
+    return false
+  }else if (codeFromUrl) {//если в строке есть код то это значит что идет процедура авторизации. Отправляем запрос на получение токена.
+    const unsplash = new Unsplash({
+      accessKey: ACCESSKEY,
+      secret: SECRET,
+      callbackUrl: CALLBACKURL,
+    });
     unsplash.auth.userAuthentication(codeFromUrl)
       .then(toJson)
       .then(json => {
-        localStorage.setItem('accessToken', JSON.stringify(json.access_token));
+        localStorage.setItem('accessToken', JSON.stringify(json.access_token));//записываем токен в локал
         window.location.assign(HOMEPAGE);// Перезагружаем гл страницу.-> новый рендер = нов проверка = эта ф больше не понадобится.
       })
-  }else {//если кода нет, то процедура его генерации
+  }else{//в люб др случаях процедура логина на сайте Unsplash. = генерации URL кода (После ввода логина сайт отправляет на callbackUrl с кодом)
+    const unsplash = new Unsplash({
+      accessKey: ACCESSKEY,
+      secret: SECRET,
+      callbackUrl: CALLBACKURL,
+    });
     const authenticationUrl = unsplash.auth.getAuthenticationUrl([
       "public",
       "write_likes",
     ]);
-    window.location.assign(authenticationUrl);//перенос на страницу логина unsplash (https://unsplash.com/oauth/login). После ввода логина он отправляет на callbackUrl с кодом.
+    window.location.assign(authenticationUrl);
   }
 }
     
