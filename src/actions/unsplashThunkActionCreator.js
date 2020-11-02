@@ -12,13 +12,13 @@ import {
 } from "./index";
 
 
-export const unsplashThunkActionCreator = (keyStr,arg2) => {//ф создающая запрос в Unsplash. 3 кастомных аргумента передаются из компонентов.
+export const unsplashThunkActionCreator = (keyStr,arg2) => {//ф создающая запрос в Unsplash. 2 кастомных аргумента передаются из компонентов.
 
 	const unsplash = new Unsplash({
 		accessKey: ACCESSKEY,
 		secret: SECRET,
 		callbackUrl: CALLBACKURL,
-		bearerToken: "AFaBKCHAaRKIVtFmrXxyflnwHn69VaTqdU70ErSmtw4",// localStorage.getItem('accessToken'),
+		bearerToken: localStorage.getItem('accessToken'),
 	});
 
 	switch (keyStr) {
