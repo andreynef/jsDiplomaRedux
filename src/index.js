@@ -13,7 +13,7 @@ const accessToken = JSON.parse(localStorage.getItem('accessToken'));
 
 if (!accessToken){
   toAuth();
-}else if (window.location.pathname !=='/') {
+}else if (window.location.pathname !=='/'||'/user') {
 //   console.log('homepage is:', HOMEPAGE)
 //   window.location.assign(`https://jsdiploma.nef-an.ru/404`)
 // // }else if(window.location.pathname ==='/404'){
