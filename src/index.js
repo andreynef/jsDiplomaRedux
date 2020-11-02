@@ -16,7 +16,8 @@ if (!accessToken){
 }else if (window.location.pathname ==='/test') {
   alert('in test');
   window.location.assign(`${HOMEPAGE}/404`);
-}else if (window.location.pathname !=='/'||'/user'||'/auth') {
+}else if (window.location.pathname !=='/'||'/user'||'/auth'||'/404') {
+  alert('in !all');
   window.location.assign(`${HOMEPAGE}/404`)
 }else{
 
