@@ -13,9 +13,15 @@ const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
 
 if (!accessToken){
   toAuth();
-}else if (window.location.pathname !=='' || '/user' || '/auth' || '/404') {
-  alert('in if')
+}else if (window.location.pathname ==='/') {
+  alert('in if /');
+}else if (window.location.pathname ==='/404') {
+  alert('in 404');
   window.location.assign(`${HOMEPAGE}/404`)
+}else if (window.location.pathname !=='/') {
+  alert('in if !/');
+}else if (window.location.pathname !=='/auth') {
+  alert('in if !/auth');
 }else{
 
   const store = configureStore();
