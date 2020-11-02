@@ -7,7 +7,6 @@ import {BrowserRouter} from "react-router-dom";
 import toAuth from "./functions/toAuth";
 import {HOMEPAGE} from "./constants";
 
-toAuth();
 
 const exists =//true если это одна из этих страниц
   window.location.pathname === '/' ||
@@ -15,7 +14,7 @@ const exists =//true если это одна из этих страниц
   window.location.pathname === '/user' ||
   window.location.pathname === '/404';
 
-if (!exists){//если false, тобишь не мои страницы то...
+if (toAuth() && !exists){//если false, тобишь не мои страницы то...
   window.location.assign(`${HOMEPAGE}/404`);//...отправляем на мою 404
 }else{
 
