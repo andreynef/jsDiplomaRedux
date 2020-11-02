@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './header.css';
+import {Link} from "react-router-dom";
 
 export function Header({devBtn, clickLogout, userProfile}) {
 
@@ -16,14 +17,15 @@ export function Header({devBtn, clickLogout, userProfile}) {
           <div className={styles.logoContainer}>
             <img src={'https://www.flaticon.com/svg/static/icons/svg/1/1394.svg'} alt={'logo'}/>
           </div>
-          {/*{devBtn &&(*/}
-          {/*  <button*/}
-          {/*  type="button"*/}
-          {/*  onClick={devBtn}*/}
-          {/*  >*/}
-          {/*  dev button (show states in console)*/}
-          {/*  </button>*/}
-          {/*)}*/}
+            <Link to={'/user'} style={{textDecoration:'none'}}>
+              userRoute
+            </Link>
+            <Link to={'/404'} style={{textDecoration:'none'}}>
+              404Route
+            </Link>
+            <Link to={'/auth'} style={{textDecoration:'none'}}>
+              AuthRoute
+            </Link>
           <div className={styles.userContainer}>
             <>
               <button className={styles.button} type="button" onClick={clickLogout}>

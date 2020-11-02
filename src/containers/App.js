@@ -9,6 +9,9 @@ import {Footer} from "../components/Footer/Footer";
 import {CardPage} from "../components/CardPage/CardPage";
 import {Header} from "../components/Header/Header";
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+import {Auth} from "../components/Auth/Auth";
+import {User} from "../components/User/User";
+import {NoPage} from "../components/NoPage/NoPage";
 
 let App = ({itemsArr, userProfile, nextPage, isCardOpened, clickedObj, clickPreview, clickLogout, clickClose, unsplashThunk}) => {
 
@@ -43,6 +46,25 @@ let App = ({itemsArr, userProfile, nextPage, isCardOpened, clickedObj, clickPrev
              />
            }
         />
+        <Route exact path={'/user'}
+           component={() =>
+             <User
+               userProfile={userProfile}
+             />
+           }
+        />
+        <Route exact path={'/404'}
+           component={() =>
+             <NoPage
+             />
+           }
+        />
+        <Route exact path={'/auth'}
+           component={() =>
+             <Auth
+             />
+           }
+        />
       </Switch>
 
       {isCardOpened &&(
@@ -52,7 +74,10 @@ let App = ({itemsArr, userProfile, nextPage, isCardOpened, clickedObj, clickPrev
           clickClose={clickClose}
         />
       )}
-      <Footer/>
+      {isCardOpened &&(
+        <Footer/>
+      )}
+
     </>
 
 )
@@ -72,7 +97,7 @@ const mapDispatchToProps = (dispatch) => {//преобразование отп�
     clickPreview: (id) => dispatch(clickPreviewAction(id)),// (id)=>{dispatch(obj)}
     clickLogout: ()=> dispatch(clickLogoutAction()),//метод в пропсах кот будет запускать dispatch в стор.
     clickClose: ()=> dispatch(clickCloseAction()),//метод в пропсах кот будет запускать dispatch в стор.
-    unsplashThunk: (keyStr, arg2, arg3)=> dispatch(unsplashThunkActionCreator(keyStr, arg2, arg3)),
+    unsplashThunk: (keyStr, arg2)=> dispatch(unsplashThunkActionCreator(keyStr, arg2)),
   }
 }
 

@@ -9,11 +9,13 @@ import {HOMEPAGE} from "./constants";
 
 
 const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+// const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
 
 if (!accessToken){
   toAuth();
-}else if (window.location.pathname ==='/cardpage' ) {
-  window.location.assign(HOMEPAGE)
+}else if (window.location.pathname !=='/' || '/user' ||'/auth') {
+  alert('in 404')
+  window.location.assign('/404')
 }else{
 
   const store = configureStore();

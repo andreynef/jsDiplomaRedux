@@ -1,0 +1,23 @@
+
+
+.authContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.authTextContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.authText {
+    font-family: Roboto;
+    font-size: 20px;
+    padding:20px 0;
+}
+
+.loader {
+    margin-top: 200px;
+    width:100px;
+}
