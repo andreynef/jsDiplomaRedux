@@ -15,11 +15,9 @@ if (!accessToken){
   toAuth();
 }else if (window.location.pathname ==='/test') {
   alert('in test');
+  window.location.assign(`${HOMEPAGE}/404`);
+}else if (window.location.pathname !=='/'||'/user'||'/auth') {
   window.location.assign(`${HOMEPAGE}/404`)
-}else if (window.location.pathname ==='/auth') {
-  alert('in if /auth');
-}else if (window.location.pathname !=='/auth') {
-  alert('in if !/auth');
 }else{
 
   const store = configureStore();
