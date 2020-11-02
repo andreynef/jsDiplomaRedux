@@ -15,6 +15,7 @@ if (!accessToken){
   toAuth();
 }else if (window.location.pathname !=='/' || '/user' ||'/auth') {
   alert('in 404')
+  console.log('homepage is:', HOMEPAGE)
   window.location.assign(`${HOMEPAGE}/404`)
 }else{
 
