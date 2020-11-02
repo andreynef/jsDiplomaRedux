@@ -13,13 +13,6 @@ const accessToken = "PtShaxn0gdCA0zVYBUWvUSpfO_nr7WB93_mgRwJ4ITE";
 
 if (!accessToken){
   toAuth();
-}else if (window.location ===`${HOMEPAGE}/`) {
-  // console.log('homepage is:', HOMEPAGE)
-  alert('in if homepage')
-}else if (window.location ===`${HOMEPAGE}/user`) {
-  alert('in if homepage/user')
-}else if (window.location ===`${HOMEPAGE}/auth`) {
-  alert('in if homepage/auth')
 }else{
 
   const store = configureStore();

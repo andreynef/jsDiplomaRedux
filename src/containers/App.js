@@ -65,6 +65,14 @@ let App = ({itemsArr, userProfile, nextPage, isCardOpened, clickedObj, clickPrev
              />
            }
         />
+        {window.location.pathname!=='/'||'/auth'||'/user' &&(
+          <Route exact path={'/auth'}
+             component={() =>
+               <NoPage
+               />
+             }
+          />
+        )}
       </Switch>
 
       {isCardOpened &&(
