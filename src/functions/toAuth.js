@@ -1,7 +1,9 @@
-import {ACCESSKEY, SECRET, CALLBACKURL, HOMEPAGE} from "../constants";
+import Unsplash, {toJson} from 'unsplash-js';
+import {ACCESSKEY, SECRET, CALLBACKURL, HOMEPAGE} from "../constants"
 
 
 export default function toAuth() {
+
   const codeFromUrl = window.location.search.split('code=')[1];// Считываем код из URL
 
   if (codeFromUrl) {//если в строке есть код то это значит что идет процедура авторизации. Отправляем запрос на получение токена.
