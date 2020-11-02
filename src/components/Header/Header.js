@@ -6,7 +6,7 @@ import capitalizeFirstLetter from "../../functions/capitalizeFirstLetter";
 export function Header({devBtn, clickLogout, userProfile}) {
 
   if (userProfile){//решение преждевременного рендера
-
+  const userName = capitalizeFirstLetter(`${userProfile.first_name}`);
     return (
       <header className={styles.headerContainer}>
         <div className={styles.centralContainer}>
@@ -41,7 +41,7 @@ export function Header({devBtn, clickLogout, userProfile}) {
                   href={userProfile.links.html}
                   className={styles.avatarText}
                 >
-                  {capitalizeFirstLetter(`${userProfile.first_name}`)}
+                  {userName}
                 </a>
               </button>
             </>
