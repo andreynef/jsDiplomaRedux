@@ -17,8 +17,8 @@ export const unsplashThunkActionCreator = (keyStr,arg2) => {//ф создающ�
 		accessKey: ACCESSKEY,
 		secret: SECRET,
 		callbackUrl: CALLBACKURL,
-		// bearerToken: localStorage.getItem('accessToken'),
-		bearerToken: "1HW7FNACP1ZopVpb0MPbNIl-rQMN-NnbIiwjnhkqa3E",
+		bearerToken: JSON.parse(localStorage.getItem('accessToken')),
+		// bearerToken: "1HW7FNACP1ZopVpb0MPbNIl-rQMN-NnbIiwjnhkqa3E",
 	});
 
 	switch (keyStr) {
