@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './placeholderCard.css';
+import React from "react";
+import styles from "./placeholderCard.css";
 
 export function PlaceholderCard() {
   return (

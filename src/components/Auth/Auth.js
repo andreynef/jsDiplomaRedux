@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './auth.css';
+import React from "react";
+import styles from "./auth.css";
 import loader from "../../img/Gear.gif";
 import toAuth from "../../functions/toAuth";
 
@@ -7,7 +7,7 @@ export function Auth() {
 
   return (
     <div className={styles.authContainer}>
-        <img src={loader} alt={'loader'} className={styles.loader}/>
+        <img src={loader} alt={"loader"} className={styles.loader}/>
         <div className={styles.authTextContainer}>
           <span className={styles.authText}>
             Authorizing...
@@ -20,7 +20,7 @@ export function Auth() {
 
 // <>
 //   {unsplash.users._bearerToken===null||undefined
-//     ? <img src={loader} alt={'loader'} className={styles.loader}/>
+//     ? <img src={loader} alt={"loader"} className={styles.loader}/>
 //     : <span> You are authorized. Going back to homepage...</span>
 //   }
 // </>

@@ -1,6 +1,6 @@
 import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
-import RootReducer from "../store/reducers";
+import RootReducer from "./reducers";
 
 export default function configureStore() {
 
@@ -9,6 +9,7 @@ export default function configureStore() {
     nextPage: 20,
     isLoading:false,
     error:null,
+    isAuth:false,
   };
 
   return createStore(

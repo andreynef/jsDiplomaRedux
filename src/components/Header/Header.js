@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './header.css';
+import React from "react";
+import styles from "./header.css";
 import {Link} from "react-router-dom";
 import capitalizeFirstLetter from "../../functions/capitalizeFirstLetter";
 
@@ -10,18 +10,9 @@ export function Header({clickLogout, userProfile}) {
     return (
       <header className={styles.headerContainer}>
         <div className={styles.centralContainer}>
-          <div className={styles.logoContainer}>
-            <img src={'https://www.flaticon.com/svg/static/icons/svg/1/1394.svg'} alt={'logo'}/>
-          </div>
-            <Link to={'/user'} style={{textDecoration:'none'}}>
-              userRoute
-            </Link>
-            <Link to={'/404'} style={{textDecoration:'none'}}>
-              404Route
-            </Link>
-            <Link to={'/auth'} style={{textDecoration:'none'}}>
-              AuthRoute
-            </Link>
+          <Link to={"/"} className={styles.logoContainer}>
+            <img src={"https://www.flaticon.com/svg/static/icons/svg/1/1394.svg"} alt={"logo"}/>
+          </Link>
           <div className={styles.userContainer}>
             <>
               <button className={styles.button} type="button" onClick={clickLogout}>

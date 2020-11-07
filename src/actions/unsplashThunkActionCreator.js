@@ -3,64 +3,72 @@
 // По умолчанию action creators в Redux не поддерживают асинхронные действия. Решение - Redux Thunk. Thunk позволяет писать создатели действий, которые возвращают функцию вместо самого обьекта действия.
 
 import Unsplash, {toJson} from "unsplash-js";
-import {ACCESSKEY, CALLBACKURL, SECRET, AMOUNT_ON_PAGE, INITIAL_PAGE} from "../constants";
+import {ACCESSKEY, CALLBACKURL, SECRET, AMOUNT_ON_PAGE, INITIAL_PAGE, BEARER_TOKEN} from "../constants/unsplash";
 import {
-	uProfileSuccessAction,
-	uLikeSuccessAction,
-	uUnlikeSuccessAction,
-	uListPhotosSuccessAction,
+	uProfileSuccessAction,//action готовый принять json ответ
+	uToggleLikeSuccessAction,//action готовый принять json ответ
+	uAddSuccessAction,//action готовый принять json ответ
+	isLoadingAction,
 } from "./index";
 
-export const unsplashThunkActionCreator = (keyStr,arg2) => {//ф создающая запрос в Unsplash. 2 кастомных аргумента передаются из компонентов.
+const unsplash = new Unsplash({
+	accessKey: ACCESSKEY,
+	secret: SECRET,
+	callbackUrl: CALLBACKURL,
+	bearerToken: BEARER_TOKEN,
+});
 
-	const unsplash = new Unsplash({
-		accessKey: ACCESSKEY,
-		secret: SECRET,
-		callbackUrl: CALLBACKURL,
-		bearerToken: JSON.parse(localStorage.getItem('accessToken')),
-		// bearerToken: "1HW7FNACP1ZopVpb0MPbNIl-rQMN-NnbIiwjnhkqa3E",
-	});
+export const uAddThunkAC = (page) => {//ф создающая запрос в Unsplash.
 
-	switch (keyStr) {
-
-		case 'listPhotos':
-			const page = arg2 ? arg2 : INITIAL_PAGE;
-			return (dispatch) => {
-				unsplash.photos.listPhotos(page, AMOUNT_ON_PAGE, "latest")
-					.then(toJson)
-					.then(json => {//arr
-						return dispatch(uListPhotosSuccessAction(json))//когда вернется ответ с сервера тогда запустить команду отправки действия кот необходима для Redux.
-					});
-			};
-
-		case 'profile':
-			return (dispatch) => {
-				unsplash.currentUser.profile()
-					.then(toJson)
-					.then(json => {//obj
-						return dispatch(uProfileSuccessAction(json))
-					});
-			};
-
-		case 'like':
-			return (dispatch) => {
-				unsplash.photos.likePhoto(arg2)
-					.then(toJson)
-					.then(json => {//obj
-						return dispatch(uLikeSuccessAction(json))
-					});
-			};
-
-		case 'unlike':
-			return (dispatch) => {
-				unsplash.photos.unlikePhoto(arg2)
-					.then(toJson)
-					.then(json => {//obj
-						return dispatch(uUnlikeSuccessAction(json))
-					});
-			};
-	};
+	return dispatch => {
+		// dispatch(isLoadingAction(true));//вкл статус лоадинг
+		unsplash.photos.listPhotos(page, AMOUNT_ON_PAGE, "latest")
+			.then(toJson)
+			.then(json => {//arr ответ
+				// dispatch(isLoadingAction(false));//выкл статус лоадинг
+				dispatch(uAddSuccessAction(json))//отправка действия dispatch кот необходима для Redux.
+			})
+			// .catch(() => dispatch(itemsHasErrored(true)));
+	}
 }
+
+export const uProfileThunkAC = () => {
+	return dispatch => {
+		// dispatch(isLoadingAction(true));
+
+		unsplash.currentUser.profile()
+			.then(toJson)
+			.then(json => {//obj ответ
+				// dispatch(isLoadingAction(false));
+				dispatch(uProfileSuccessAction(json))
+			})
+			// .catch(() => dispatch(itemsHasErrored(true)));
+	}
+}
+
+export const uToggleLikeThunkAC = (obj) => {
+	console.log('in uToggleLikeThunkAC', obj)
+
+	return dispatch => {
+
+		if (obj.liked_by_user){
+			unsplash.photos.unlikePhoto(obj.id)
+				.then(toJson)
+				.then(json => {//obj ответ
+					dispatch(uToggleLikeSuccessAction(json))
+				})
+			// .catch(() => dispatch(itemsHasErrored(true)));
+		}else{
+			unsplash.photos.likePhoto(obj.id)
+				.then(toJson)
+				.then(json => {//obj ответ
+					dispatch(uToggleLikeSuccessAction(json))
+				})
+			// .catch(() => dispatch(itemsHasErrored(true)));
+		}
+	}
+}
+
 
 
 
@@ -76,7 +84,7 @@ export const unsplashThunkActionCreator = (keyStr,arg2) => {//ф создающ�
 // оригинал примера
 // export function itemsFetchDataSuccess(json) {
 // 	return {
-// 		type: 'ITEMS_FETCH_DATA_SUCCESS',
+// 		type: "ITEMS_FETCH_DATA_SUCCESS",
 // 		json
 // 	};
 // }

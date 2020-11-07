@@ -1,11 +1,10 @@
-import React from 'react';
-import styles from './cardList.css';
+import React from "react";
+import styles from "./cardList.css";
 import {Card} from "./Card/Card";
-import Loader from '../../../src/img/3.svg'
+import Loader from "../../../src/img/3.svg"
 import {PlaceholderCard} from "./PlaceholderCard/PlaceholderCard";
-import {CardPage} from "../CardPage/CardPage";
 
-export function CardList({unsplashThunk,itemsArr,clickPreview,clickedObj,nextPage}) {
+export function CardList({uToggleLikeThunkAC,itemsArr, nextPage, uAddThunkAC, clickPreview}) {
 
   let cardList;
   if (!itemsArr) {
@@ -26,18 +25,9 @@ export function CardList({unsplashThunk,itemsArr,clickPreview,clickedObj,nextPag
       return (
           <Card
             key={item.id}
-            id={item.id}
-            created={item.created_at}
-            name={item.user.first_name}
-            profile={item.user.links.html}
-            likes={item.likes}
-            url={item.urls.thumb}
-            ava={item.user.profile_image.small}
-            clickPreview={clickPreview}
-            isLiked={item.liked_by_user}
-            clickedObj={clickedObj}
             cardObj={item}
-            unsplashThunk={unsplashThunk}
+            clickPreview={clickPreview}
+            uToggleLikeThunkAC={uToggleLikeThunkAC}
           />
       )
     })}
@@ -47,8 +37,8 @@ export function CardList({unsplashThunk,itemsArr,clickPreview,clickedObj,nextPag
         <section className={styles.centralContainer}>
           <ul className={styles.cardList}>
             {cardList}
-            {itemsArr && (
-              <Card unsplashThunk={unsplashThunk} nextPage={nextPage} itemsArr={itemsArr} whoIs={'moreButton'}/>
+            {itemsArr.length!==0 && (
+              <Card uAddThunkAC={uAddThunkAC} nextPage={nextPage} itemsArr={itemsArr} whoIs={"moreButton"}/>
             )}
           </ul>
         </section>

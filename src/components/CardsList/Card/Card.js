@@ -1,25 +1,56 @@
-import React from 'react';
-import styles from './card..css';
+import React from "react";
+import styles from "./card..css";
 import {Controls} from "./Controls/Controls";
-import {Info} from "./Info/Info";
+import {Metadata} from "./Metadata/Metadata";
 import {Preview} from "./Preview/Preview";
 
-export function Card({itemsArr, nextPage, url, cardObj, created, likes, profile, name, ava, description, id, clickPreview, isLiked, whoIs, unsplashThunk}) {
+export const Card = ({cardObj, uToggleLikeThunkAC, whoIs, uAddThunkAC, clickPreview, nextPage}) => {
 
-  return (
-    <div className={styles.card}>
-      {whoIs === 'moreButton'
-        ?
-        <div className={styles.loadMoreContainer} onClick={()=>unsplashThunk('listPhotos',nextPage)}>
+  if (whoIs === "moreButton") {
+    return (
+      <div className={styles.card}>
+        <div className={styles.loadMoreContainer} onClick={() => uAddThunkAC(nextPage)}>
           <span className={styles.loadMoreText}>Load more</span>
         </div>
-        :
-        <>
-          <Info created={created} profile={profile} name={name} ava={ava} description={description}/>
-          <Preview url={url} clickPreview={clickPreview} cardObj={cardObj}/>
-          <Controls cardObj={cardObj} likes={likes} unsplashThunk={unsplashThunk} isLiked={isLiked} id={id}/>
-        </>
-        }
-    </div>
-  )
+      </div>
+    )
+  } else {
+
+    return (
+      <div className={styles.card}>
+        <Metadata cardObj={cardObj}/>
+        <Preview cardObj={cardObj} clickPreview={clickPreview}/>
+        <Controls cardObj={cardObj} uToggleLikeThunkAC={uToggleLikeThunkAC}/>
+      </div>
+    )
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// const mapStateToProps = (state) => {//state = store.getState().
+//   return {
+//     itemsArr: state.items,
+//   }
+// }
+//
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     uToggleLikeThunkAC: (id)=> dispatch(uToggleLikeThunkAC(id)),
+//   }
+// }
+//
+// Card = connect(mapStateToProps,mapDispatchToProps)(Card);//коннектим приложение к стору передав пропсы
+//
+// export default Card

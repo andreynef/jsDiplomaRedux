@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './user.css';
+import React from "react";
+import styles from "./user.css";
 
 export function User({userProfile}) {
 console.log(userProfile);
@@ -8,7 +8,7 @@ console.log(userProfile);
         <img
           src={userProfile.profile_image.small}
           alt="avatar"
-          style={{width:'30px', height:'30px'}}
+          style={{width:"30px", height:"30px"}}
         />
         <p className={styles.authText}>
           userLink is: {userProfile.links.html}
@@ -27,7 +27,7 @@ console.log(userProfile);
 
 // <>
 //   {unsplash.users._bearerToken===null||undefined
-//     ? <img src={loader} alt={'loader'} className={styles.loader}/>
+//     ? <img src={loader} alt={"loader"} className={styles.loader}/>
 //     : <span> You are authorized. Going back to homepage...</span>
 //   }
 // </>

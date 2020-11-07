@@ -1,3 +1,10 @@
+.metaContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    /*justify-content: space-evenly;*/
+    padding: 10px;
+}
+
 .metaData {
     display: flex;
     flex-flow: row nowrap;

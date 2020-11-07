@@ -1,12 +1,8 @@
-.previewContainerButton {
+.previewContainer {
     height: 300px;
-    margin:0;
-    padding:0;
-    border:none;
-    outline:none;
 }
 
-.previewContainerButton:hover{
+.previewContainer:hover{
     cursor: pointer;
 }
 

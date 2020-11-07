@@ -1,15 +1,15 @@
-import React from 'react';
-import styles from './preview.css';
+import React from "react";
+import styles from "./preview.css";
 import {Link} from "react-router-dom";
 
 
-export function Preview({url, clickPreview, cardObj}) {
+export function Preview({cardObj, clickPreview}) {
   return (
-    <button className={styles.previewContainerButton} onClick={()=>clickPreview(cardObj)}>
+    <Link to={'/cardpage'} className={styles.previewContainer} onClick={()=>clickPreview(cardObj)}>
       <img className={styles.previewImg}
-           src={url}
-           alt='previewPic'
+           src={cardObj.urls.thumb}
+           alt="previewPic"
       />
-    </button>
+    </Link>
   );
 }
