@@ -39,9 +39,7 @@ export function Header({userProfile}) {
                   </a>
                 </button>
               </>
-
-            )
-
+            )}
           </div>
         </div>
       </header>
