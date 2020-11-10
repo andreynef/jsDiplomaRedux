@@ -8,10 +8,11 @@ import {Auth} from "./components/Auth/Auth";
 
 export const store = configureStore();
 const token = localStorage.getItem("accessToken");
-console.log(token)
-alert('in index. Token in  local is:', token)
+// const token = "quPTXBIX3NauNHAAWAlxyJtQ6pHhL-jtcuEUaO5hFzo";
+// console.log(token)
+// alert('in index. Token in  local is in console', token)
 // const token = "1HW7FNACP1ZopVpb0MPbNIl-rQMN-NnbIiwjnhkqa3E";
-// localStorage.setItem("accessToken", JSON.stringify(token));
+// localStorage.setItem("accessToken", JSON.stringify("1HW7FNACP1ZopVpb0MPbNIl-rQMN-NnbIiwjnhkqa3E"));
 
   ReactDOM.render (
     <Provider store={store}>

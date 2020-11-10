@@ -13,6 +13,7 @@ export const unsplash = new Unsplash({
   callbackUrl: "https://jsdiploma.nef-an.ru/auth",
   // bearerToken: "1HW7FNACP1ZopVpb0MPbNIl-rQMN-NnbIiwjnhkqa3E",
   bearerToken: localStorage.getItem("accessToken"),
+  // bearerToken: "quPTXBIX3NauNHAAWAlxyJtQ6pHhL-jtcuEUaO5hFzo",
 });
 
 export const getAuthenticationUrl = ()=>{
@@ -38,7 +39,7 @@ export const setAccessToken = (codeFromUrl) => {
     .then(toJson)
     .then(json => {
       alert('received token json in local:', json)
-      localStorage.setItem("accessToken", JSON.stringify(json.access_token));//при ответе, записываем токен в локал
+      localStorage.setItem("accessToken", json.access_token);//при ответе, записываем токен в локал
       window.location.assign('https://jsdiploma.nef-an.ru/');// Перезагружаем гл страницу.-> новый рендер = нов проверка = эта ф больше не выполнится.
     })
 }

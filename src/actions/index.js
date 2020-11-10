@@ -47,12 +47,13 @@ const counter = () => {//счетчик с замыканием (страниц�
 let counterPages = counter();
 
 export const uAddAC = () => {//ф создающая запрос в Unsplash.
-	console.log('in Actions. Creating action Add...')
+	console.log('in Actions. Creating action Add... Unsplash is:',unsplash)
 
 	return dispatch => {
 		unsplash.photos.listPhotos(counterPages(), 5, "latest")//counterPages() это число кот кажд раз при вызове увеличся на 1.
 			.then(toJson)
 			.then(json => {//arr ответ
+				console.log('got json answer from add...', json)
 				dispatch(addSuccess(json))//отправка действия dispatch кот необходима для Redux.
 			})
 	}
