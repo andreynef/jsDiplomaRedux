@@ -39,7 +39,7 @@ export const setAccessToken = (codeFromUrl) => {
     .then(toJson)
     .then(json => {
       alert('received token json in local:', json)
-      localStorage.setItem("accessToken", JSON.stringify(json.access_token));//при ответе, записываем токен в локал
+      localStorage.setItem("accessToken", json.access_token);//при ответе, записываем токен в локал
       window.location.assign('https://jsdiploma.nef-an.ru/');// Перезагружаем гл страницу.-> новый рендер = нов проверка = эта ф больше не выполнится.
     })
 }
