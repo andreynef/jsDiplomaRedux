@@ -8,6 +8,7 @@ import {Auth} from "./components/Auth/Auth";
 
 export const store = configureStore();
 const token = localStorage.getItem("accessToken");
+console.log(token)
 alert('in index. Token in  local is:', token)
 // const token = "1HW7FNACP1ZopVpb0MPbNIl-rQMN-NnbIiwjnhkqa3E";
 // localStorage.setItem("accessToken", JSON.stringify(token));
