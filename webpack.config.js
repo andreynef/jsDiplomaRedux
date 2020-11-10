@@ -19,29 +19,25 @@ let conf = {
           }
         }
       },
-      // {
-      //   test: /\.[jt]sx?$/,
-      //   use: ['ts-loader']//встраивание с пом него в бандл.
-      // },
       // css
       {
         test: /\.css$/,
-        use: [//действие справа налево, сначала css потом style, потом сверху в бандл.
+        use: [
           'style-loader',//style
           {
             loader: 'css-loader',
             options: {
-              modules: {//все css файлы воспринимаются как модули
+              modules: {
                 mode: 'local',
-                localIdentName: '[name]__[local]--[hash:base64:5]',//маркировка названий сгенерированных стилей
+                localIdentName: '[name]__[local]--[hash:base64:5]',
               }
             }
           },//css
         ],
-        exclude: GLOBAL_CSS_REGEXP // все css кроме GLOBAL_CSS_REGEXP (= main.global.css в папке src). Их обработка б отдельным обычн способом, ниже.
+        exclude: GLOBAL_CSS_REGEXP
       },
       {
-        test: GLOBAL_CSS_REGEXP,// матчить только их. И тжсм сделать в серверной чести но без style
+        test: GLOBAL_CSS_REGEXP,
         use: ["style-loader", "css-loader"]
       },
       {
@@ -68,13 +64,12 @@ let conf = {
     new Dotenv(),
     new HtmlWebpackPlugin({// перезапись html в папку build
       template: './src/index.html',//копия с шаблона
-      favicon: './src/icon/instagram.ico'//вставляет в headd
+      favicon: './src/img/instagram.ico'//вставляет в head
     }),
   ],
   output: {
     filename: 'index_bundle.js',
     path: path.join(__dirname, 'build'),
-    // publicPath:'build/'//чтобы девсервер правильно работал. Хз что значит.
   },
 };
 

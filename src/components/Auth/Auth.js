@@ -1,26 +1,41 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./auth.css";
+import {getAuthenticationUrl, setAccessToken} from "../../functions/unsplash";
 import loader from "../../img/Gear.gif";
-import toAuth from "../../functions/toAuth";
 
 export function Auth() {
 
+  const codeFromUrl = window.location.search.split("code=")[1];
+
+  const toLogin=()=>{
+    setAccessToken(getAuthenticationUrl());
+  }
+
+  useEffect(()=>{
+    if (codeFromUrl) {
+      setAccessToken();
+    }
+  },[])
+
+
   return (
     <div className={styles.authContainer}>
-        <img src={loader} alt={"loader"} className={styles.loader}/>
         <div className={styles.authTextContainer}>
-          <span className={styles.authText}>
-            Authorizing...
-          </span>
+          {codeFromUrl && (
+            <>
+              <img src={loader} alt={'loader'} className={styles.loader}/>
+              <span className={styles.authText}>
+                Authorizing...
+              </span>
+            </>
+          )}
+          {!codeFromUrl && (
+            <button className={styles.button} onClick={()=> toLogin()}>
+            login
+            </button>
+          )}
         </div>
     </div>
   )
 }
 
-
-// <>
-//   {unsplash.users._bearerToken===null||undefined
-//     ? <img src={loader} alt={"loader"} className={styles.loader}/>
-//     : <span> You are authorized. Going back to homepage...</span>
-//   }
-// </>

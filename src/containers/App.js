@@ -1,126 +1,66 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import "../main.global.css";
-import {connect} from "react-redux";//это то, что позволит подключить этот компонент к хранилищу Redux.
-import {clickLogoutAction, clickPreviewAction} from "../actions";
-import {
-  uAddThunkAC,
-  uProfileThunkAC,
-  uToggleLikeThunkAC
-} from "../actions/unsplashThunkActionCreator";
 import {Route, Switch} from "react-router-dom";
 import {CardList} from "../components/CardsList/CardList";
 import {Footer} from "../components/Footer/Footer";
 import {CardPage} from "../components/CardPage/CardPage";
 import {Header} from "../components/Header/Header";
-import {NoPage} from "../components/NoPage/NoPage";
+import {connect} from "react-redux";
+import {uAddAC, uProfileAC, uToggleLikeAC} from "../actions";
 
-let App = ({itemsArr, userProfile, clickedObj, clickLogoutAction, clickPreviewAction, uAddThunkAC, uProfileThunkAC, uToggleLikeThunkAC, nextPage}) => {
+let App = ({itemsArr, toAdd, userProfile, toProfile, toToggleLike}) => {
 
   useEffect(()=>{
-    uAddThunkAC();//-  componentDidMount  -  initial Render
-    uProfileThunkAC();//-  componentDidMount  -  initial Render
+    toAdd();//-  componentDidMount
+    toProfile();//-  componentDidMount
   },[])
 
+
   return (
-        <>
-          <Header
-            clickLogout={clickLogoutAction}
-            userProfile={userProfile}
-          />
-          <Switch>
-            <Route exact path={"/"}
+    <>
+      <Header
+        userProfile={userProfile}
+      />
+      <Switch>
+        <Route exact path={"/"}
                component={() =>
                  <CardList
-                   uAddThunkAC={uAddThunkAC}
-                   uToggleLikeThunkAC={uToggleLikeThunkAC}
+                   toAdd={toAdd}
+                   toToggleLike={toToggleLike}
                    itemsArr={itemsArr}
-                   clickPreview={clickPreviewAction}
-                   nextPage={nextPage}
                  />
                }
-            />
-            <Route exact path={"/404"}
-               component={() =>
-                 <NoPage/>
-               }
-            />
-            <Route exact path={"/cardpage"}
-               component={() =>
+        />
+        <Route exact path={"/cardpage/:id"}//тот айди передается в Link в Card : <Link to={'/cardpage/:${id}'}
+               render={(props) =>
                  <CardPage
-                   clickedObj={clickedObj}
-                   uToggleLikeThunkAC={uToggleLikeThunkAC}
-                   // clickClose={clickCloseAction}
+                   toToggleLike={toToggleLike}
+                   clickedObj={itemsArr.find(item => item.id === props.match.params.id)}//фильтр того айди из сущ списка. Роутер передает проп match.params
                  />
                }
-            />
-          </Switch>
-          <Footer/>
-        </>
+        />
+      </Switch>
+      <Footer/>
+      </>
   )
 };
 
-const mapStateToProps = (state) => {//преобразование кучи стора (в данном случае обьект InitialState) в только необходимые пропсы. State = store.getState().
-  return {//возврат обьекта с только необходимыми свойствами
-    itemsArr: state.items,
-    userProfile: state.userProfile,//в компонентах в пропсах приходит userProfile равное state.userProfile
-    nextPage:state.nextPage,
-    clickedObj:state.clickedObj,
-  }
-}
-const mapDispatchToProps = (dispatch) => {//преобразование отправок действий в пропсы
+const mapStateToProps = (state) => {
+  console.log('in mapStateToProps state:', state);
   return {
-    clickPreviewAction: (id) => dispatch(clickPreviewAction(id)),
-    clickLogoutAction: ()=> dispatch(clickLogoutAction()),//метод в пропсах кот будет запускать dispatch в стор.
-    uAddThunkAC: (page)=> dispatch(uAddThunkAC(page)),
-    uProfileThunkAC: ()=> dispatch(uProfileThunkAC()),
-    uToggleLikeThunkAC: (id)=> dispatch(uToggleLikeThunkAC(id)),
+    itemsArr: state.items,
+    userProfile: state.userProfile,
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  console.log('in mapDispatchToProps');
+  return {
+    toAdd: ()=> dispatch(uAddAC()),
+    toProfile: ()=> dispatch(uProfileAC()),
+    toToggleLike: (id)=> dispatch(uToggleLikeAC(id)),
   }
 }
 
-App = connect(mapStateToProps,mapDispatchToProps)(App);//коннектим приложение к стору передав пропсы
+App = connect(mapStateToProps, mapDispatchToProps)(App);
 
-export default App
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//   addToList() {
-//     this.setState(prevState => ({
-//         list: prevState.list.concat(this.state.text),
-//         text: ""
-//     }))
-// }
-
-// removeItem(item) {
-//   const item = getItem(this.state.list, item.id) // Method to get item in list through comparison (IE: find some item with item.id), it has to return ITEM and INDEX in array
-//   const newlist = [].concat(list) // Clone array with concat or slice(0)
-//   newlist.splice(item.index, 1);
-//   this.setState({list: newlist});       
-// }
+export default App;

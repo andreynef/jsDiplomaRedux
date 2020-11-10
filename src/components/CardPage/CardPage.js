@@ -4,16 +4,14 @@ import HeartIconPressed from "../../img/HeartIconPressed.svg";
 import HeartIconUnpressed from "../../img/HeartIconUnpressed.svg";
 import ProgressiveImage from "react-progressive-graceful-image";
 import {Link} from "react-router-dom";
-import {HOMEPAGE} from "../../constants/unsplash";
 
-export function CardPage({uToggleLikeThunkAC, clickedObj}) {
+export const CardPage = ({clickedObj, toToggleLike}) => {
 
-  if (clickedObj) {
     return (
       <div className={styles.cardPage}>
-        <div className={styles.centralContainer}>{/* ref anchor - outside click of this container*/}
+        <div className={styles.centralContainer}>
           <div className={styles.imageContainer}>
-            <ProgressiveImage//загрузчик из https://www.npmjs.com/package/react-progressive-graceful-image
+            <ProgressiveImage
               src={clickedObj.urls.regular}
               placeholder={clickedObj.urls.thumb}
             >
@@ -35,7 +33,7 @@ export function CardPage({uToggleLikeThunkAC, clickedObj}) {
             <div className={styles.likesContainer}>
               <button
                 className={styles.button}
-                onClick={()=>uToggleLikeThunkAC(clickedObj)}
+                onClick={()=>toToggleLike(clickedObj)}
               >
                 <span className={styles.likesValue}>{clickedObj.likes}</span>
                 <div className={styles.likesIcon}>{clickedObj.liked_by_user? <HeartIconPressed/> : <HeartIconUnpressed/>}</div>
@@ -46,7 +44,4 @@ export function CardPage({uToggleLikeThunkAC, clickedObj}) {
         </div>
       </div>
     )
-  }else {
-    return  window.location.assign(`${HOMEPAGE}/404`);
   }
-}

@@ -1,47 +1,85 @@
-//action creators
 
-export const clickPreviewAction = (id) => {//готовые экшены летящие в редюсеры. Там они редюсятся/фильтруются и посылаются/диспатчатся в стор с новым стейтом
-	console.log('in clickPreviewAction', id )
+import {toJson} from "unsplash-js";
+import unsplash from "../functions/unsplash";
+
+const ADD_SUCCESS = 'ADD_SUCCESS';
+const PROFILE_SUCCESS = 'PROFILE_SUCCESS';
+const TOGGLE_LIKE_SUCCESS = 'TOGGLE_LIKE_SUCCESS';
+
+//-------------готовые экшены летящие в редюсеры. Там они редюсятся/фильтруются и посылаются/диспатчатся в стор с новым стейтом
+
+export const toggleLikeSuccess = (obj) => {
 	return {
-		type: "CLICK_PREVIEW_ACTION",
-		payload:id
+		type: TOGGLE_LIKE_SUCCESS,
+		obj,
 	}
 };
 
-export const clickLogoutAction = () => {
+export const addSuccess = (arr) => {
 	return {
-		type: "CLICK_LOGOUT_ACTION",
+		type: ADD_SUCCESS,
+		arr,
 	}
 };
 
-export const isLoadingAction = (bool) => {
+function profileSuccess (obj) {
 	return {
-		type: "IS_LOADING_ACTION",
-		payload:bool,
+		type: PROFILE_SUCCESS,
+		obj
 	}
-};
-
-export const uToggleLikeSuccessAction = (json) => {//готовые экшены-ответы от запросов
-	console.log('in uToggleLikeSuccessAction', json)
-	return {
-		type: "UNSPLASH_TOGGLELIKE_SUCCESS_ACTION",
-		payload:json
-	}
-};
-
-export function uAddSuccessAction(json) {//готовые экшены-ответы от запросов
-	console.log('in uAddSuccessAction', json)
-
-	return {
-		type: "UNSPLASH_ADD_SUCCESS_ACTION",
-		payload:json
-	};
 }
 
-export function uProfileSuccessAction(json) {//готовые экшены-ответы от запросов
-	return {
-		type: "UNSPLASH_PROFILE_SUCCESS_ACTION",
-		payload:json
-	};
+
+//-------------предподготовка экшенов. Action creators. Thunk.
+
+// По умолчанию action creators в Redux не поддерживают асинхронные действия. Решение - Redux Thunk. Thunk позволяет писать создатели действий, которые возвращают функцию вместо самого обьекта действия.
+
+
+const counter = () => {//счетчик с замыканием (страницы)
+	let currentPage = 1;
+	return () => currentPage++;
+}
+
+let counterPages = counter();
+
+export const uAddAC = () => {
+
+	return dispatch => {
+		unsplash.photos.listPhotos(counterPages(), 5, "latest")
+			.then(toJson)
+			.then(json => {//arr ответ
+				dispatch(addSuccess(json))
+			})
+	}
+}
+
+export const uProfileAC = () => {
+	return dispatch => {
+		unsplash.currentUser.profile()
+			.then(toJson)
+			.then(json => {//arr ответ
+				dispatch(profileSuccess(json))
+			})
+	}
+}
+
+export const uToggleLikeAC = (obj) => {
+
+	return dispatch => {
+		dispatch(toggleLikeSuccess(obj));//меняю сам в редюсерах. Оставляю запросы летящими дальше.
+		if (obj.liked_by_user) {
+			unsplash.photos.unlikePhoto(obj.id)
+				.then(toJson)
+				.then(json => {//obj ответ
+					console.log('heres my skipped answer', json)
+				})
+		} else {
+			unsplash.photos.likePhoto(obj.id)
+				.then(toJson)
+				.then(json => {//obj ответ
+					console.log('heres my skipped answer', json)
+				})
+		}
+	}
 }
 

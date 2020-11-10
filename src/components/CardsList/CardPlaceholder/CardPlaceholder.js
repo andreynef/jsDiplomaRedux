@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./placeholderCard.css";
+import styles from "./cardPlaceholder.css";
 
-export function PlaceholderCard() {
+export function CardPlaceholder() {
   return (
     <div className={styles.card}>
       <div className={styles.infoContainer}>

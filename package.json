@@ -44,6 +44,7 @@
     "react-infinite-scroll-component": "^5.1.0",
     "react-progressive-graceful-image": "^0.6.12",
     "react-router-dom": "^5.2.0",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "2.1.1",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",

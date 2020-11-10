@@ -3,10 +3,13 @@ import styles from "./header.css";
 import {Link} from "react-router-dom";
 import capitalizeFirstLetter from "../../functions/capitalizeFirstLetter";
 
-export function Header({clickLogout, userProfile}) {
+export const Header = ({userProfile}) => {
 
-  if (userProfile){//решение преждевременного рендера
-  const userName = capitalizeFirstLetter(`${userProfile.first_name}`);
+  const toLogout = ()=> {
+    localStorage.removeItem('accessToken');
+    window.location.assign('https://jsdiploma.nef-an.ru');
+  }
+
     return (
       <header className={styles.headerContainer}>
         <div className={styles.centralContainer}>
@@ -15,24 +18,22 @@ export function Header({clickLogout, userProfile}) {
           </Link>
           <div className={styles.userContainer}>
             <>
-              <button className={styles.button} type="button" onClick={clickLogout}>
-                <span className={styles.logoutText}>
-                  Logout
-                </span>
+              <button className={styles.button} type="button" onClick={()=> toLogout()}>
+                  <span className={styles.logoutText}>Logout</span>
               </button>
               <img
                 className={styles.avatarImg}
-                src={userProfile.profile_image.small}
+                src={userProfile? userProfile.profile_image.small:'../img/cross.png'}
                 alt="avatar"
               />
               <button className={styles.button} type="button">
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href={userProfile.links.html}
+                  href={userProfile ? userProfile.links.html : '#'}
                   className={styles.avatarText}
                 >
-                  {userName}
+                  {userProfile ? capitalizeFirstLetter(`${userProfile.first_name}`) : 'User'}
                 </a>
               </button>
             </>
@@ -40,9 +41,6 @@ export function Header({clickLogout, userProfile}) {
         </div>
       </header>
     );
-  }else{
-    return false
-  }
 }
 
 

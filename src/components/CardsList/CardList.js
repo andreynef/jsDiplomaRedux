@@ -2,10 +2,9 @@ import React from "react";
 import styles from "./cardList.css";
 import {Card} from "./Card/Card";
 import Loader from "../../../src/img/3.svg"
-import {PlaceholderCard} from "./PlaceholderCard/PlaceholderCard";
+import {CardPlaceholder} from "./CardPlaceholder/CardPlaceholder";
 
-export function CardList({uToggleLikeThunkAC,itemsArr, nextPage, uAddThunkAC, clickPreview}) {
-
+export const CardList = ({itemsArr, toAdd, toToggleLike}) => {
   let cardList;
   if (!itemsArr) {
     cardList=
@@ -13,22 +12,21 @@ export function CardList({uToggleLikeThunkAC,itemsArr, nextPage, uAddThunkAC, cl
         <div className={styles.loader}>
           <Loader/>
         </div>
-        <PlaceholderCard/>
-        <PlaceholderCard/>
-        <PlaceholderCard/>
-        <PlaceholderCard/>
-        <PlaceholderCard/>
-        <PlaceholderCard/>
+        <CardPlaceholder/>
+        <CardPlaceholder/>
+        <CardPlaceholder/>
+        <CardPlaceholder/>
+        <CardPlaceholder/>
+        <CardPlaceholder/>
       </>
   } else {
-    cardList = itemsArr.map((item, i) => {
+    cardList = itemsArr.map((item) => {
       return (
-          <Card
-            key={item.id}
-            cardObj={item}
-            clickPreview={clickPreview}
-            uToggleLikeThunkAC={uToggleLikeThunkAC}
-          />
+        <Card
+          key={item.id}
+          cardObj={item}
+          toToggleLike={toToggleLike}
+        />
       )
     })}
 
@@ -37,11 +35,14 @@ export function CardList({uToggleLikeThunkAC,itemsArr, nextPage, uAddThunkAC, cl
         <section className={styles.centralContainer}>
           <ul className={styles.cardList}>
             {cardList}
-            {itemsArr.length!==0 && (
-              <Card uAddThunkAC={uAddThunkAC} nextPage={nextPage} itemsArr={itemsArr} whoIs={"moreButton"}/>
+            {itemsArr.length !==0 && (
+              <Card whoIs={"moreButton"} toAdd={toAdd}/>
             )}
           </ul>
         </section>
       </main>
     )
 }
+
+
+

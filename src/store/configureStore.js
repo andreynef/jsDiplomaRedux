@@ -1,19 +1,18 @@
-import {createStore, applyMiddleware} from "redux";
+import rootReducer from "../reducers";
+
+import {createStore, applyMiddleware, combineReducers} from "redux";
 import thunk from "redux-thunk";
-import RootReducer from "./reducers";
 
 export default function configureStore() {
+  console.log('in configureStore. Creating store.')
 
   const initialState = {
-    items:[],
+    items: [],
     nextPage: 20,
-    isLoading:false,
-    error:null,
-    isAuth:false,
-  };
+  }
 
   return createStore(
-    RootReducer,
+    rootReducer,
     initialState,
     applyMiddleware(thunk)//добавляется для Thunk
   );

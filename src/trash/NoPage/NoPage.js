@@ -1,5 +1,4 @@
 import React from "react";
-import loader from "../../img/Gear.gif";
 import styles from "./noPage.css";
 
 export function NoPage() {
