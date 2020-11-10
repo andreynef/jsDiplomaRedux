@@ -6,7 +6,6 @@ import loader from "../../img/Gear.gif";
 export function Auth() {
 
   const codeFromUrl = window.location.search.split("code=")[1];// Считываем код из URL
-  // const codeFromUrl = "zyKwtrmk_84YpjPBPyfgQbPDVd-4z2lXfC2YsnUi2oY";
 
   const toLogin=()=>{
     goForToken(getAuthenticationUrl());
@@ -24,16 +23,16 @@ export function Auth() {
     <div className={styles.authContainer}>
         <div className={styles.authTextContainer}>
           {codeFromUrl && (
-            <>
+            <div className={styles.authContainer}>
               <img src={loader} alt={'loader'} className={styles.loader}/>
-              <span className={styles.authText}>
+              <p className={styles.authText}>
                 Authorizing...
-              </span>
-            </>
+              </p>
+            </div>
           )}
           {!codeFromUrl && (
             <button className={styles.button} onClick={()=> toLogin()}>
-            login
+              login
             </button>
           )}
         </div>
