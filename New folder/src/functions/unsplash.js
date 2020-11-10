@@ -1,12 +1,5 @@
 import Unsplash, { toJson } from 'unsplash-js';
 
-// const isNotLocalToken = ()=> {
-//   return localStorage.getItem("accessToken")===undefined ||
-//     localStorage.getItem("accessToken") === '' ||
-//     localStorage.getItem("accessToken") === null
-// }
-// console.log('isNotLocalToken',isNotLocalToken());
-
 export const unsplash = new Unsplash({
   accessKey: "sQ_OK-FHQD1dS6L4h98HkNOr-HHHKRE8KuUPVf9BXAw",
   secret: "Eu_hWiHa3mUGcHyGtq2Idfj_gGCGYq6Jp0mv1ZL_kjA",
@@ -16,24 +9,14 @@ export const unsplash = new Unsplash({
 });
 
 export const getAuthenticationUrl = ()=>{
-  // console.log(unsplash);
-  // alert('in getAuthenticationUrl. unsplash in local')
+  alert(unsplash);
     return unsplash.auth.getAuthenticationUrl([
         "public",
         "write_likes"
     ]);
 }
 
-export const requestToken = (authenticationUrl)=>{
-  // console.log(unsplash);
-  // alert('in requestToken. AuthenticationUrl in local')
-  location.assign(authenticationUrl);
-}
-
 export const setAccessToken = (codeFromUrl) => {
-  // console.log(unsplash);
-  // alert('in setAccessToken. unsplash in local')
-
   unsplash.auth.userAuthentication(codeFromUrl)
     .then(toJson)
     .then(json => {

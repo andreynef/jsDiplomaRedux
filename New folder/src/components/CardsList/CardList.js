@@ -7,7 +7,6 @@ import {CardPlaceholder} from "./CardPlaceholder/CardPlaceholder";
 export const CardList = ({itemsArr, toAdd, toToggleLike}) => {
   let cardList;
   if (!itemsArr) {
-    console.log('in CardList. No items to render:',itemsArr)
     cardList=
       <>
         <div className={styles.loader}>
@@ -21,7 +20,6 @@ export const CardList = ({itemsArr, toAdd, toToggleLike}) => {
         <CardPlaceholder/>
       </>
   } else {
-    console.log('in CardList. Items for rendering are:',itemsArr)
     cardList = itemsArr.map((item) => {
       return (
         <Card

@@ -1,3 +1,7 @@
+//Редюсеры - это ЧФ(!) фильтрующая действия, принимающ 2 арг 1)сущ стейт (массив/обьект) и 2) действие (action=obj) кот нужно провести с этим стейтом (определяется по type и фильтруется чер switch). Возврат - копия стейта (!).
+
+import { combineReducers } from 'redux';
+
 const rootReducer = (state, action) => {
 
 	switch (action.type){
@@ -17,13 +21,17 @@ const rootReducer = (state, action) => {
 				})
 			}
 
-		case "ADD_SUCCESS"://приходит Arr
+		case "ADD_SUCCESS"://приходит Arr json
+			console.log('in Reducer Add. Got state:', state)
+			console.log('still here in Reducer Add. Got action.payload:', action.arr)
 			return {
 				...state,
 				items: [...state.items,...action.arr],
 			};
 
-		case "PROFILE_SUCCESS"://приходит Obj
+		case "PROFILE_SUCCESS"://приходит Obj json
+			console.log('in Reducer Profile. Got state:', state)
+			console.log('still here in Reducer Profile. Got action.payload:', action.obj)
 			return {
 				...state,
 				userProfile:action.obj,
@@ -33,5 +41,9 @@ const rootReducer = (state, action) => {
 			return state;
 	}
 }
+
+// const rootReducer = combineReducers({
+// 	uSuccessReducer
+// });
 
 export default rootReducer;

@@ -3,12 +3,11 @@ import styles from "./header.css";
 import {Link} from "react-router-dom";
 import capitalizeFirstLetter from "../../functions/capitalizeFirstLetter";
 
-export function Header({userProfile}) {
+export const Header = ({userProfile}) => {
 
   const toLogout = ()=> {
     localStorage.removeItem('accessToken');
-    window.location.assign('http://localhost:8080/');
-    // window.location.assign('https://jsdiploma.nef-an.ru/auth');
+    window.location.assign('https://jsdiploma.nef-an.ru');
   }
 
     return (
