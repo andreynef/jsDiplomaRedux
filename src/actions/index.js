@@ -47,7 +47,7 @@ const counter = () => {//счетчик с замыканием (страниц�
 let counterPages = counter();
 
 export const uAddAC = () => {//ф создающая запрос в Unsplash.
-	console.log('in Actions. Creating action Add... Unsplash.bearerToken is:',unsplash._bearerToken)
+	console.log('in Actions Add. Unsplash.bearerToken is:',unsplash._bearerToken)
 	alert('in action add. unsplash in console')
 	return dispatch => {
 		unsplash.photos.listPhotos(counterPages(), 5, "latest")//counterPages() это число кот кажд раз при вызове увеличся на 1.
