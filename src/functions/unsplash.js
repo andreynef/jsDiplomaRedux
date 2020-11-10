@@ -16,29 +16,30 @@ export const unsplash = new Unsplash({
 });
 
 export const getAuthenticationUrl = ()=>{
-  // console.log(unsplash);
-  // alert('in getAuthenticationUrl. unsplash in local')
+  console.log(unsplash);
+  alert('in getAuthenticationUrl. unsplash in local')
     return unsplash.auth.getAuthenticationUrl([
         "public",
         "write_likes"
     ]);
 }
 
-export const requestToken = (authenticationUrl)=>{
-  // console.log(unsplash);
-  // alert('in requestToken. AuthenticationUrl in local')
+export const goForToken = (authenticationUrl)=>{
+  console.log(authenticationUrl);
+  alert('in goforToken. AuthenticationUrl in local')
   location.assign(authenticationUrl);
 }
 
 export const setAccessToken = (codeFromUrl) => {
-  // console.log(unsplash);
-  // alert('in setAccessToken. unsplash in local')
+  console.log(codeFromUrl);
+  alert('in setAccessToken. codeFromUrl in local')
 
   unsplash.auth.userAuthentication(codeFromUrl)
     .then(toJson)
     .then(json => {
+      alert('received token json in local:', json)
       localStorage.setItem("accessToken", JSON.stringify(json.access_token));//при ответе, записываем токен в локал
-      window.location.assign('https://jsdiploma.nef-an.ru');// Перезагружаем гл страницу.-> новый рендер = нов проверка = эта ф больше не выполнится.
+      window.location.assign('https://jsdiploma.nef-an.ru/');// Перезагружаем гл страницу.-> новый рендер = нов проверка = эта ф больше не выполнится.
     })
 }
 
