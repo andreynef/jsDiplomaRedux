@@ -44,7 +44,7 @@ let counterPages = counter();
 
 export const uAddAC = () => {
 	return dispatch => {
-		unsplash.photos.listPhotos(counterPages(), 5, "latest")
+		unsplash.photos.listPhotos(counterPages(), 10, "latest")
 			.then(toJson)
 			.then(json => {//arr ответ
 				dispatch(addSuccess(json))
