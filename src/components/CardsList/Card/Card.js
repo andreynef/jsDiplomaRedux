@@ -8,7 +8,6 @@ import formatDate from "../../../functions/formatDate";
 export const Card = ({cardObj, toToggleLike, toAdd, whoIs}) => {
 
   if (whoIs === "moreButton") {
-    console.log('in Card. moreButton');
 
     return (
       <div className={styles.card}>
@@ -18,7 +17,6 @@ export const Card = ({cardObj, toToggleLike, toAdd, whoIs}) => {
       </div>
     )
   } else {
-    console.log('in Card. Obj to render is: ',  cardObj);
 
     return (
       <div className={styles.card}>
