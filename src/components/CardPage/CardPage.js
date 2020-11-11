@@ -3,8 +3,8 @@ import styles from "./cardPage.css";
 import HeartIconPressed from "../../img/HeartIconPressed.svg";
 import HeartIconUnpressed from "../../img/HeartIconUnpressed.svg";
 import ProgressiveImage from "react-progressive-graceful-image";
-import formatDate from "../../trash/clean/src/functions/formatDate";
-import useOnClickOutside from "../../trash/clean/src/trash/hooks/useOnClickOutside";
+import formatDate from "../../functions/formatDate";
+import useOnClickOutside from "../../functions/useOnClickOutside";
 
 export const CardPage = ({clickedObj, toToggleLike}) => {
 

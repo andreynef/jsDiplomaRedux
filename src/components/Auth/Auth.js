@@ -23,12 +23,8 @@ export function Auth() {
     <div className={styles.authContainer}>
       {codeFromUrl && (
         <div className={styles.authTextContainer}>
-            <div className={styles.authContainer}>
-              <img src={loader} alt={'loader'} className={styles.loader}/>
-              <p className={styles.authText}>
-                Authorizing...
-              </p>
-            </div>
+          <img src={loader} alt={'loader'} className={styles.loader}/>
+          <span className={styles.authText}>Authorizing...</span>
         </div>
       )}
       {!codeFromUrl && (

@@ -3,7 +3,7 @@ import styles from "./card.css";
 import HeartIconPressed from "../../../img/HeartIconPressed.svg";
 import HeartIconUnpressed from "../../../img/HeartIconUnpressed.svg";
 import {Link} from "react-router-dom";
-import formatDate from "../../../trash/clean/src/functions/formatDate";
+import formatDate from "../../../functions/formatDate";
 
 export const Card = ({cardObj, toToggleLike, toAdd, whoIs}) => {
 

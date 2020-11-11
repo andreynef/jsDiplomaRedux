@@ -35,13 +35,14 @@
 }
 
 .authText {
-    font-family: Roboto;
     font-size: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .loader {
-    margin-top: 300px;
-    width:100px;
+    width:40px;
+    margin-right: 10px;
 }
 
 @media all and (max-width: 763px) {
