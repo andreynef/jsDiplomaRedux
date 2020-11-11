@@ -1,3 +1,4 @@
+// react-redux connect() используется для создания компонентов-контейнеров, которые подключены к хранилищу Redux
 import React, {useEffect} from "react";
 import "../main.global.css";
 import {Route, Switch} from "react-router-dom";
@@ -6,10 +7,10 @@ import {Footer} from "../components/Footer/Footer";
 import {CardPage} from "../components/CardPage/CardPage";
 import {Header} from "../components/Header/Header";
 import {connect} from "react-redux";
-import {uAddAC, uProfileAC, uToggleLikeAC} from "../actions";
+import {uAddAC, uProfileAC, uToggleLikeAC} from "../actions/thunk";
 import {NoPage} from "../components/NoPage/NoPage";
 
-let App = ({itemsArr, toAdd, userProfile, toProfile, toToggleLike}) => {
+const App = ({itemsArr, toAdd, userProfile, toProfile, toToggleLike}) => {
 
   useEffect(()=>{
     toAdd();//-  componentDidMount
@@ -63,6 +64,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-App = connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);//connect(null, mapDispatchToProps)
 
-export default App;

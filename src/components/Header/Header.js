@@ -47,6 +47,22 @@ export function Header({userProfile}) {
 }
 
 
+//Если нужно получать данные из хранилища, можно преобразовать обычный компонент в компонент-контейнер, обернув его в компонент высшего порядка, возвращаемый функцией connect() из react-redux. :
 
-
+// function ProfileContainer(props) {
+//   return (
+//     props.loggedIn
+//       ? <Profile profile={props.profile} />
+//       : <div>Please login to view profile.</div>
+//   )
+// }
+//
+// const mapStateToProps = function(state) {
+//   return {
+//     profile: state.user.profile,
+//     loggedIn: state.auth.loggedIn
+//   }
+// }
+//
+// export default connect(mapStateToProps)(ProfileContainer);
 
