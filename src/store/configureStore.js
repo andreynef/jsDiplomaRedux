@@ -4,11 +4,8 @@ import {createStore, applyMiddleware, combineReducers} from "redux";
 import thunk from "redux-thunk";
 
 export default function configureStore() {
-  console.log('in configureStore. Creating store.')
-
   const initialState = {
     items: [],
-    nextPage: 20,
   }
 
   return createStore(

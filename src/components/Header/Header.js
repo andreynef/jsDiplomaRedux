@@ -7,8 +7,7 @@ export function Header({userProfile}) {
 
   const toLogout = ()=> {
     localStorage.removeItem('accessToken');
-    window.location.assign('http://localhost:8080/');
-    // window.location.assign('https://jsdiploma.nef-an.ru/auth');
+    window.location.assign('https://jsdiploma.nef-an.ru/');
   }
 
     return (

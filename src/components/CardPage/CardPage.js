@@ -1,9 +1,10 @@
-import React, {useRef} from "react";
+import React from "react";
 import styles from "./cardPage.css";
 import HeartIconPressed from "../../img/HeartIconPressed.svg";
 import HeartIconUnpressed from "../../img/HeartIconUnpressed.svg";
 import ProgressiveImage from "react-progressive-graceful-image";
 import {Link} from "react-router-dom";
+import formatDate from "../../functions/formatDate";
 
 export const CardPage = ({clickedObj, toToggleLike}) => {
 
@@ -28,7 +29,7 @@ export const CardPage = ({clickedObj, toToggleLike}) => {
                 />
                 <a className={styles.avatarText} href={clickedObj.user.links.html}>{clickedObj.user.first_name}</a>
               </div>
-              <span className={styles.createdAt}>{clickedObj.created_at.slice(0,10)}</span>
+              <span className={styles.createdAt}>{formatDate(clickedObj.created_at)}</span>
             </div>
             <div className={styles.likesContainer}>
               <button

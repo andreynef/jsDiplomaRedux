@@ -22,16 +22,12 @@ const rootReducer = (state, action) => {
 			}
 
 		case "ADD_SUCCESS"://приходит Arr json
-			console.log('in Reducer Add. Got state:', state)
-			console.log('still here in Reducer Add. Got action.payload:', action.arr)
 			return {
 				...state,
 				items: [...state.items,...action.arr],
 			};
 
 		case "PROFILE_SUCCESS"://приходит Obj json
-			console.log('in Reducer Profile. Got state:', state)
-			console.log('still here in Reducer Profile. Got action.payload:', action.obj)
 			return {
 				...state,
 				userProfile:action.obj,

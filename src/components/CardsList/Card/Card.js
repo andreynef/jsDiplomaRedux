@@ -3,6 +3,7 @@ import styles from "./card.css";
 import HeartIconPressed from "../../../img/HeartIconPressed.svg";
 import HeartIconUnpressed from "../../../img/HeartIconUnpressed.svg";
 import {Link} from "react-router-dom";
+import formatDate from "../../../functions/formatDate";
 
 export const Card = ({cardObj, toToggleLike, toAdd, whoIs}) => {
 
@@ -34,7 +35,7 @@ export const Card = ({cardObj, toToggleLike, toAdd, whoIs}) => {
               <span className={styles.userName}>{cardObj.user.first_name}</span>
             </a>
             <span className={styles.createdAt}>
-          {cardObj.created_at.slice(0,10)}
+          {formatDate(cardObj.created_at)}
         </span>
           </div>
         </div>
@@ -67,30 +68,3 @@ export const Card = ({cardObj, toToggleLike, toAdd, whoIs}) => {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-//
-// const mapStateToProps = (state) => {//state = store.getState().
-//   return {
-//     itemsArr: state.items,
-//   }
-// }
-//
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     uToggleLikeAC: (id)=> dispatch(uToggleLikeAC(id)),
-//   }
-// }
-//
-// Card = connect(mapStateToProps,mapDispatchToProps)(Card);//коннектим приложение к стору передав пропсы
-//
-// export default Card

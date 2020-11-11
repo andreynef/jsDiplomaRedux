@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import styles from "./auth.css";
-import {getAuthenticationUrl, goForToken, setAccessToken, unsplash} from "../../functions/unsplash";
+import {getAuthenticationUrl, goForToken, setAccessToken} from "../../services/unsplash";
 import loader from "../../img/Gear.gif";
 
 export function Auth() {
@@ -12,8 +12,7 @@ export function Auth() {
   }
 
   useEffect(()=>{
-    if (codeFromUrl) {//если в строке есть код то значит идет процедура авторизации. Отправляем запрос на получение токена.
-      alert('in auth useEffect. Setting access token and reload')
+    if (codeFromUrl) {
       setAccessToken(codeFromUrl);
     }
   },[])
