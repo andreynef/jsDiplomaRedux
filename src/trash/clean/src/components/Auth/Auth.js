@@ -1,12 +1,11 @@
 import React, {useEffect} from "react";
 import styles from "./auth.css";
-import {getAuthenticationUrl, goForToken, setAccessToken, unsplash} from "../../services/unsplash";
+import {getAuthenticationUrl, goForToken, setAccessToken} from "../../services/unsplash";
 import loader from "../../img/Gear.gif";
 
 export function Auth() {
 
   const codeFromUrl = window.location.search.split("code=")[1];// Считываем код из URL
-  // const codeFromUrl = "zyKwtrmk_84YpjPBPyfgQbPDVd-4z2lXfC2YsnUi2oY";
 
   const toLogin=()=>{
     goForToken(getAuthenticationUrl());

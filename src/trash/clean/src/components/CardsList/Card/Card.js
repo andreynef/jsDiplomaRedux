@@ -3,7 +3,7 @@ import styles from "./card.css";
 import HeartIconPressed from "../../../img/HeartIconPressed.svg";
 import HeartIconUnpressed from "../../../img/HeartIconUnpressed.svg";
 import {Link} from "react-router-dom";
-import formatDate from "../../../trash/clean/src/functions/formatDate";
+import formatDate from "../../../functions/formatDate";
 
 export const Card = ({cardObj, toToggleLike, toAdd, whoIs}) => {
 
@@ -12,7 +12,7 @@ export const Card = ({cardObj, toToggleLike, toAdd, whoIs}) => {
     return (
       <div className={styles.card}>
         <button className={styles.loadMoreButton} onClick={() => toAdd()}>
-          <span className={styles.loadMoreText}>Load more &#10148;</span>
+          <span className={styles.loadMoreText}>Load more</span>
         </button>
       </div>
     )
@@ -56,12 +56,7 @@ export const Card = ({cardObj, toToggleLike, toAdd, whoIs}) => {
               onClick={()=>toToggleLike(cardObj)}
             >
               <span className={styles.likesValue}>{cardObj.likes}</span>
-              <div className={styles.likesIcon}>
-                {cardObj.liked_by_user?
-                  <HeartIconPressed/>
-                  :
-                  <HeartIconUnpressed/>}
-              </div>
+              <div className={styles.likesIcon}>{cardObj.liked_by_user? <HeartIconPressed/> : <HeartIconUnpressed/>}</div>
             </button>
           </div>
         </div>
@@ -69,3 +64,5 @@ export const Card = ({cardObj, toToggleLike, toAdd, whoIs}) => {
     )
   }
 }
+
+

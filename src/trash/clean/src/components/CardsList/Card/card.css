@@ -13,16 +13,20 @@
 
 .loadMoreButton {
     display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    width:100%;
     height:100%;
-    border:none;
-    border-radius: 5px;
+    outline: none;
+    margin:0;
+    padding:0;
     background-color: black;
 }
 
 .loadMoreButton:hover {
     cursor:pointer;
+    color:orange;
 }
 
 .loadMoreButton:hover span{
@@ -141,6 +145,7 @@
 .likesIcon {
     margin-left: 10px;
     /*display:inline-block;*/
+
 }
 
 /*.errorContainer {*/
@@ -167,7 +172,7 @@
     outline: none;
 }
 
-.button:hover{
+.button:hover {
     cursor:pointer;
 }
 

@@ -3,17 +3,19 @@ import styles from "./cardPage.css";
 import HeartIconPressed from "../../img/HeartIconPressed.svg";
 import HeartIconUnpressed from "../../img/HeartIconUnpressed.svg";
 import ProgressiveImage from "react-progressive-graceful-image";
-import formatDate from "../../trash/clean/src/functions/formatDate";
-import useOnClickOutside from "../../trash/clean/src/trash/hooks/useOnClickOutside";
+import {Link} from "react-router-dom";
+import formatDate from "../../functions/formatDate";
+import useOnClickOutside from "../../trash/hooks/useOnClickOutside";
 
 export const CardPage = ({clickedObj, toToggleLike}) => {
 
   const ref = useRef();
   useOnClickOutside(ref, () => window.history.go(-1));
 
+
   return (
       <div className={styles.cardPage}>
-        <div ref={ref} className={styles.centralContainer}>{/*anchor ref here*/}
+        <div ref={ref} className={styles.centralContainer}>
           <div className={styles.imageContainer}>
             <ProgressiveImage
               src={clickedObj.urls.regular}

@@ -7,13 +7,12 @@ import {CardPage} from "../components/CardPage/CardPage";
 import {Header} from "../components/Header/Header";
 import {connect} from "react-redux";
 import {uAddAC, uProfileAC, uToggleLikeAC} from "../actions";
-import {NoPage} from "../components/NoPage/NoPage";
 
 let App = ({itemsArr, toAdd, userProfile, toProfile, toToggleLike}) => {
 
   useEffect(()=>{
-    toAdd();//-  componentDidMount
-    toProfile();//-  componentDidMount
+    toAdd();
+    toProfile();
   },[])
 
 
@@ -32,9 +31,6 @@ let App = ({itemsArr, toAdd, userProfile, toProfile, toToggleLike}) => {
                  />
                }
         />
-        <Route path={"*"}
-               component={() => <NoPage/>}
-        />
         <Route exact path={"/cardpage/:id"}//тот айди передается в Link в Card : <Link to={'/cardpage/:${id}'}
                render={(props) =>
                  <CardPage
@@ -49,10 +45,10 @@ let App = ({itemsArr, toAdd, userProfile, toProfile, toToggleLike}) => {
   )
 };
 
-const mapStateToProps = (state) => {// state = store.getState().
+const mapStateToProps = (state) => {
   return {
     itemsArr: state.items,
-    userProfile: state.userProfile,//в компонентах в пропсах приходит userProfile равное state.userProfile
+    userProfile: state.userProfile,
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -66,3 +62,4 @@ const mapDispatchToProps = (dispatch) => {
 App = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default App;
+

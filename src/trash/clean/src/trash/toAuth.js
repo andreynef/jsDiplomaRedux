@@ -1,26 +1,27 @@
-import rootReducer from "../reducers";
-
-import {createStore, applyMiddleware, combineReducers} from "redux";
-import thunk from "redux-thunk";
-
-export default function configureStore() {
-
-  const initialState = {
-    items: [],
-  }
-
-  return createStore(
-    rootReducer,
-    initialState,
-    applyMiddleware(thunk)//добавляется для Thunk
-  );
-}
-
-
-
-
-
-
+// import {getAuthenticationUrl, setAccessToken, unsplash} from "./unsplash";
+//
+// export default function toAuth() {
+//
+//   const codeFromUrl = window.location.search.split("code=")[1];// Считываем код из URL
+//   console.log('in toAuth. codeFromUrl:', codeFromUrl);
+//   const token = unsplash;
+//   console.log('in toAuth. unsplash._bearerToken:', unsplash);
+//
+//   if (token) {//если есть токен то выходим и продолжаем монтаж.
+//     console.log('all good. We have token. Returning from toAuth')
+//     return
+//   }
+//
+//   if (codeFromUrl) {//если в строке есть код то значит идет процедура авторизации. Отправляем запрос на получение токена.
+//     alert('in toAuth(). codeFromUrl ? - yes')
+//     setAccessToken();
+//   }
+//
+//   if (!token && !codeFromUrl) {//процедура логина на сайте Unsplash. = генерации URL кода (После ввода логина сайт отправляет на callbackUrl с кодом)
+//     alert('in toAuth(). !token && !codeFromUrl')
+//     getAuthenticationUrl();
+//   }
+// }
 
 
 

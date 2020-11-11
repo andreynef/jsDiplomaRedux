@@ -1,0 +1,47 @@
+
+.button {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    width: 100px;
+    height: 100px;
+    font-size: 26px;
+    color: transparent;
+    border:none;
+    outline:none;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 1px 1px 5px grey;
+    background-image: url("../../img/authlogo.jpg");
+    background-size: contain;
+    transition: all 0.4s ease;
+
+}
+
+.button:hover {
+    cursor: pointer;
+    color: orange;
+    background-image: none;
+    transition: all 0.4s ease;
+}
+
+.authContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.authTextContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.authText {
+    font-family: Roboto;
+    font-size: 20px;
+}
+
+.loader {
+    margin-top: 300px;
+    width:100px;
+}

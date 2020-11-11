@@ -1,5 +1,7 @@
 //Редюсеры - это ЧФ(!) фильтрующая действия, принимающ 2 арг 1)сущ стейт (массив/обьект) и 2) действие (action=obj) кот нужно провести с этим стейтом (определяется по type и фильтруется чер switch). Возврат - копия стейта (!).
 
+import { combineReducers } from 'redux';
+
 const rootReducer = (state, action) => {
 
 	switch (action.type){
@@ -35,5 +37,9 @@ const rootReducer = (state, action) => {
 			return state;
 	}
 }
+
+// const rootReducer = combineReducers({
+// 	uSuccessReducer
+// });
 
 export default rootReducer;
