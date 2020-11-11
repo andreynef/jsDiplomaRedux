@@ -32,9 +32,9 @@ let App = ({itemsArr, toAdd, userProfile, toProfile, toToggleLike}) => {
                  />
                }
         />
-        <Route path={"*"}
-               component={() => <NoPage/>}
-        />
+        {/*<Route path={"*"}*/}
+        {/*       component={() => <NoPage/>}*/}
+        {/*/>*/}
         <Route exact path={"/cardpage/:id"}//тот айди передается в Link в Card : <Link to={'/cardpage/:${id}'}
                render={(props) =>
                  <CardPage
