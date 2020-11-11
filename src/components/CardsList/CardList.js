@@ -6,7 +6,7 @@ import {CardPlaceholder} from "./CardPlaceholder/CardPlaceholder";
 
 export const CardList = ({itemsArr, toAdd, toToggleLike}) => {
   let cardList;
-  if (!itemsArr) {
+  if (itemsArr.length ===0) {
     cardList=
       <>
         <div className={styles.loader}>

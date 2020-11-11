@@ -40,7 +40,7 @@ let App = ({itemsArr, toAdd, userProfile, toProfile, toToggleLike}) => {
                }
         />
       </Switch>
-        <Footer/>
+      <Footer/>
       </>
   )
 };
