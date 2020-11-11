@@ -21,21 +21,21 @@ export function Auth() {
 
   return (
     <div className={styles.authContainer}>
+      {codeFromUrl && (
         <div className={styles.authTextContainer}>
-          {codeFromUrl && (
             <div className={styles.authContainer}>
               <img src={loader} alt={'loader'} className={styles.loader}/>
               <p className={styles.authText}>
                 Authorizing...
               </p>
             </div>
-          )}
-          {!codeFromUrl && (
-            <button className={styles.button} onClick={()=> toLogin()}>
-              login
-            </button>
-          )}
         </div>
+      )}
+      {!codeFromUrl && (
+        <button className={styles.button} onClick={()=> toLogin()}>
+          login
+        </button>
+      )}
     </div>
   )
 }
