@@ -6,7 +6,7 @@ import capitalizeFirstLetter from "../../functions/capitalizeFirstLetter";
 export function Header({userProfile}) {
 
   const toLogout = ()=> {
-    localStorage.removeItem('accessToken');
+    sessionStorage.removeItem('accessToken');
     // window.location.assign('http://localhost:8080/');
     window.location.assign('https://jsdiploma.nef-an.ru');
   }
