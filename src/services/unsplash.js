@@ -8,7 +8,6 @@ export const unsplash = new Unsplash({
 });
 
 export const getAuthenticationUrl = ()=>{
-  alert('in getAuthenticationUrl. unsplash in local')
     return unsplash.auth.getAuthenticationUrl([
         "public",
         "write_likes"
