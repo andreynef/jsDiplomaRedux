@@ -16,7 +16,7 @@ export const getAuthenticationUrl = ()=>{
     ]);
 }
 
-export const goForToken = (authenticationUrl)=>{
+export const redirectForToken = (authenticationUrl)=>{
   location.assign(authenticationUrl);
 }
 

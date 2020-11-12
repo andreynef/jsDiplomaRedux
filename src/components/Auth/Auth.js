@@ -1,37 +1,40 @@
 import React, {useEffect} from "react";
 import styles from "./auth.css";
-import {getAuthenticationUrl, goForToken, setAccessToken, unsplash} from "../../services/unsplash";
+import {getAuthenticationUrl, redirectForToken, setAccessToken} from "../../services/unsplash";
 import loader from "../../img/Gear.gif";
+import {getCodeFromUrl} from "../../services/getCodeFromUrl";
 
 export function Auth() {
 
-  const codeFromUrl = window.location.search.split("code=")[1];// Считываем код из URL
-  // const codeFromUrl = "zyKwtrmk_84YpjPBPyfgQbPDVd-4z2lXfC2YsnUi2oY";
+  const code = getCodeFromUrl();
 
   const toLogin=()=>{
-    goForToken(getAuthenticationUrl());
+    redirectForToken(getAuthenticationUrl());
   }
 
   useEffect(()=>{
-    if (codeFromUrl) {
-      setAccessToken(codeFromUrl);
+    if (code) {
+      setAccessToken(code);
     }
   },[])
+
+  const loginBtn = (
+    <button className={styles.button} onClick={()=> toLogin()}>
+      login
+    </button>
+  )
+
+  const progressEl = (
+    <div className={styles.authTextContainer}>
+      <img src={loader} alt={'loader'} className={styles.loader}/>
+      <span className={styles.authText}>Authorizing...</span>
+    </div>
+  )
 
 
   return (
     <div className={styles.authContainer}>
-      {codeFromUrl && (
-        <div className={styles.authTextContainer}>
-          <img src={loader} alt={'loader'} className={styles.loader}/>
-          <span className={styles.authText}>Authorizing...</span>
-        </div>
-      )}
-      {!codeFromUrl && (
-        <button className={styles.button} onClick={()=> toLogin()}>
-          login
-        </button>
-      )}
+      {code ? progressEl : loginBtn}
     </div>
   )
 }
