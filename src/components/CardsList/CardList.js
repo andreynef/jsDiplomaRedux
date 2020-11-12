@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./cardList.css";
 import {Card} from "./Card/Card";
-import Loader from "../../../src/img/3.svg"
 import {CardPlaceholder} from "./CardPlaceholder/CardPlaceholder";
 
 export const CardList = ({itemsArr, toAdd, toToggleLike}) => {
@@ -9,9 +8,6 @@ export const CardList = ({itemsArr, toAdd, toToggleLike}) => {
   if (itemsArr.length ===0) {
     cardList=
       <>
-        <div className={styles.loader}>
-          <Loader/>
-        </div>
         <CardPlaceholder/>
         <CardPlaceholder/>
         <CardPlaceholder/>

@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
-  "homepage": "andreynef.github.io/16module_Redux_Diploma",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --open --hot",
-    "deploy": "gh-pages -d build",
-    "predeploy": "npm run build"
   },
   "author": "",
   "license": "ISC",

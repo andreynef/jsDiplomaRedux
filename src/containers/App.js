@@ -58,7 +58,7 @@ const mapStateToProps = (state) => {// state = store.getState().
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    toAdd: ()=> dispatch(uAddAC()),
+    toAdd: ()=> dispatch(uAddAC()),//в компонентах в пропсах приходит toAdd
     toProfile: ()=> dispatch(uProfileAC()),
     toToggleLike: (id)=> dispatch(uToggleLikeAC(id)),
   }
